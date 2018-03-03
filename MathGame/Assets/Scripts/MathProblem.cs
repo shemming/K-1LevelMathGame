@@ -15,8 +15,9 @@ public class MathProblem : MonoBehaviour {
 	void Start ()
 	{
 		// add a listener for when user clicks enter button
-		Button btn = enterButton.GetComponent<Button> ();
-		btn.onClick.AddListener (TaskOnClick);
+		enterButton
+			.onClick
+			.AddListener (TaskOnClick);
 
 		// randomly generate 2 numbers between 0-10 for the math problem
 		rnd = new System.Random ();
@@ -45,6 +46,10 @@ public class MathProblem : MonoBehaviour {
 		if (input == sum) 
 		{
 			Debug.Log ("success");
+			num1 = rnd.Next (0, 10);
+			num2 = rnd.Next (0, 10);
+			sum = num1 + num2;
+			mathProblem.text = num1 + " + " + num2 + " = ";
 		} 
 		else 
 		{
