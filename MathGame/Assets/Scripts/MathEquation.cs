@@ -7,6 +7,12 @@ namespace AssemblyCSharp
 	/// </summary>
 	public class MathEquation
 	{
+
+		public enum EquationType {
+			Addition,
+			Subtraction
+		}
+
 		/// <summary>
 		/// Number used in addition equation
 		/// </summary>
@@ -17,20 +23,31 @@ namespace AssemblyCSharp
 		/// </summary>
 		private System.Random rnd;
 
-		private bool isAddition, isSubtraction;
+		/// <summary>
+		/// Determines what type of equation is getting evaluated
+		/// </summary>
+		private EquationType equationType;
+
+		/// <summary>
+		/// Used to determine the difficulty of the equation.
+		/// </summary>
 		private int level, increaseRange;
 
-		public MathEquation (int level, int increaseRange, bool isAddition = false, bool isSubtraction = false)
+		/// <summary>
+		/// Initializes a new instance of the MathEquation class.
+		/// </summary>
+		/// <param name="level">Level of equation difficulty. Can be > 1 if user has saved data</param>
+		/// <param name="increaseRange">how much each level increases by</param>
+		/// <param name="type">type of equation</param> 
+		public MathEquation (int increaseRange, int level, EquationType type)
 		{
-			this.isAddition = isAddition;
-			this.isSubtraction = isSubtraction;
+			this.equationType = type;
 			this.level = level;
 			this.increaseRange = increaseRange;
 
-			// randomly generate 2 numbers between 0-10 for the math problem
+			// randomly generate 2 numbers for the math problem
 			rnd = new System.Random ();
-			num1 = rnd.Next (0, level*increaseRange);
-			num2 = rnd.Next (0, level*increaseRange);
+			GenerateNewEquation ();
 		}
 
 		/// <summary>
@@ -50,13 +67,27 @@ namespace AssemblyCSharp
 		}
 
 		/// <summary>
-		/// returns the sum of num1 and num2
+		/// Gets the sum.
 		/// </summary>
+		/// <value>The sum.</value>
 		public int Sum 
 		{
 			get { return num1 + num2; }
 		}
 
+		/// <summary>
+		/// Gets the difference.
+		/// </summary>
+		/// <value>The difference.</value>
+		public int Difference 
+		{
+			get { return num1 - num2; }
+		}
+
+		/// <summary>
+		/// Gets or sets the level. Won't let level be set lower than 1.
+		/// </summary>
+		/// <value>The level.</value>
 		public int Level 
 		{
 			get { return level; }
@@ -68,6 +99,9 @@ namespace AssemblyCSharp
 			}
 		}
 
+		/// <summary>
+		/// Increases to the next level of difficulty.
+		/// </summary>
 		public void IncreaseLevel() 
 		{
 			level++;
@@ -83,28 +117,29 @@ namespace AssemblyCSharp
 		public void GenerateNewEquation()
 		{
 			// get new random numbers for the math problem
-			int tmpNum1 = rnd.Next (0, level*increaseRange);
-			int tmpNum2 = rnd.Next (0, level*increaseRange);
+			int tmpNum1 = 0, tmpNum2 = 0;
 
-			if (isAddition)
+			if (equationType == EquationType.Addition)
 			{
 				// make sure it is not the same problem as was just given
-				while (tmpNum1 == num1 && tmpNum2 == num2)
+				do
 				{
-					tmpNum1 = rnd.Next (0, level*increaseRange);
-					tmpNum2 = rnd.Next (0, level*increaseRange);
+					tmpNum1 = rnd.Next (0, level * increaseRange);
+					tmpNum2 = rnd.Next (0, level * increaseRange);
 				}
+				while(tmpNum1 == num1 && tmpNum2 == num2);
 			}
-			else if (isSubtraction)
+			else if (equationType == EquationType.Subtraction)
 			{
 				// make sure it is not the same problem as was just given
 				// and make sure the answer won't be negative
-				while ((tmpNum1 == num1 && tmpNum2 == num2)
-					|| tmpNum1 < tmpNum2)
+				do
 				{
-					tmpNum1 = rnd.Next (0, level*increaseRange);
-					tmpNum2 = rnd.Next (0, level*increaseRange);
+					tmpNum1 = rnd.Next (0, level * increaseRange);
+					tmpNum2 = rnd.Next (0, level * increaseRange);
 				}
+				while ((tmpNum1 == num1 && tmpNum2 == num2)
+				       || tmpNum1 < tmpNum2);
 			}
 
 			// set variables to reflect the new numbers

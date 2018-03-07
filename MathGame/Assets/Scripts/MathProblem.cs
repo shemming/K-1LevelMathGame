@@ -41,7 +41,7 @@ public class MathProblem : MonoBehaviour {
 		level = 1;
 		increaseRange = 10;
 
-		equation = new MathEquation (level: level, increaseRange: increaseRange, isAddition: true);
+		equation = new MathEquation (level, increaseRange, MathEquation.EquationType.Addition);
 		mathProblem.text = equation.Num1 + " + " + equation.Num2 + " = ";
 	}
 
@@ -55,7 +55,7 @@ public class MathProblem : MonoBehaviour {
 
 		// if the user presses enter, take that as if they clicked the enter button
 		// check if the answer is correct
-		if ((Input.GetKeyDown ("enter") || Input.GetKeyDown ("return")) && isFocused)
+		if (Input.GetKeyDown (KeyCode.Return) && isFocused)
 		{
 			CheckAnswer ();
 		} 
@@ -105,7 +105,8 @@ public class MathProblem : MonoBehaviour {
 
 			if (correctAnswers == 10)
 			{
-				IncreaseDifficulty ();
+				Debug.Log ("Next Level!");
+				equation.IncreaseLevel ();
 			}
 
 		} 
@@ -114,11 +115,6 @@ public class MathProblem : MonoBehaviour {
 			Debug.Log ("failure");
 			InputFieldCO.ActivateInputField();
 		}
-
-	}
-
-	private void IncreaseDifficulty() 
-	{
 
 	}
 }
