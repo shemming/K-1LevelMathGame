@@ -12,7 +12,7 @@ public class MathProblem : MonoBehaviour {
 	public Text mathProblem, userInput;
 	public Button enterButton;
 	private MathEquation equation;
-	private string INPUT = "userInput";
+	private const string INPUT = "userInput";
 	private GameObject inputFieldGO;
 	private InputField InputFieldCO;
 	private bool isFocused;
@@ -50,7 +50,6 @@ public class MathProblem : MonoBehaviour {
 	/// </summary>
 	void Update () 
 	{
-
 		inputFieldGO = GameObject.Find (INPUT);
 
 		// if the user presses enter, take that as if they clicked the enter button
