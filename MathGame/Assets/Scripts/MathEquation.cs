@@ -34,6 +34,11 @@ namespace AssemblyCSharp
 		private int level, increaseRange;
 
 		/// <summary>
+		/// The max level that the game can go to.
+		/// </summary>
+		private const int MAX_LEVEL = 3;
+
+		/// <summary>
 		/// Initializes a new instance of the MathEquation class.
 		/// </summary>
 		/// <param name="level">Level of equation difficulty. Can be > 1 if user has saved data</param>
@@ -101,10 +106,14 @@ namespace AssemblyCSharp
 
 		/// <summary>
 		/// Increases to the next level of difficulty.
+		/// Doesn't allow level to pass the max set level
 		/// </summary>
 		public void IncreaseLevel() 
 		{
-			level++;
+			if (level < MAX_LEVEL)
+			{
+				level++;
+			}
 		}
 
 

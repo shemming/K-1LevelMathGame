@@ -19,6 +19,7 @@ public class MathProblem : MonoBehaviour {
 	private int correctAnswers;
 	private int level;
 	private int increaseRange;
+	Animator ani;
 	#endregion
 
 	/// <summary>
@@ -41,8 +42,11 @@ public class MathProblem : MonoBehaviour {
 		level = 1;
 		increaseRange = 10;
 
+		// get the first math equation and set the text
 		equation = new MathEquation (level, increaseRange, MathEquation.EquationType.Addition);
 		mathProblem.text = equation.Num1 + " + " + equation.Num2 + " = ";
+
+		ani = GetComponent<Animator> ();
 	}
 
 	/// <summary>
@@ -95,6 +99,9 @@ public class MathProblem : MonoBehaviour {
 		{ // user answered correctly
 			Debug.Log ("success");
 
+			// play animation of treasure chest opening
+			ani.Play ("ChestAnimation", -1, 0f);
+
 			// generate a new math problem & update display
 			correctAnswers++;
 			equation.GenerateNewEquation ();
@@ -116,4 +123,5 @@ public class MathProblem : MonoBehaviour {
 		}
 
 	}
+
 }
