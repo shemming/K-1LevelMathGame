@@ -11,16 +11,23 @@ public class MathProblem : MonoBehaviour {
 	#region Variable Declararion
 	public Text mathProblem, userInput;
 	public Button enterButton;
+
 	public Text score;
 	private MathEquation equation;
+
 	private const string INPUT = "userInput";
 	private GameObject inputFieldGO;
 	private InputField InputFieldCO;
 	private bool isFocused;
+
 	private int correctAnswers;
 	private int level;
 	private int increaseRange;
-	Animator ani;
+
+	public GameObject coinGO;
+	private PlayAnimation coinScript;
+	public GameObject chestGO;
+	private PlayAnimation chestScript;
 	#endregion
 
 	/// <summary>
@@ -28,6 +35,10 @@ public class MathProblem : MonoBehaviour {
 	/// </summary>
 	void Start ()
 	{
+		// get access to script on Chest and Coin object to play it's animation
+		coinScript = coinGO.GetComponent<PlayAnimation> ();
+		chestScript = chestGO.GetComponent<PlayAnimation> ();
+
 		// add a listener for when user clicks enter button
 		enterButton
 			.onClick
@@ -48,8 +59,6 @@ public class MathProblem : MonoBehaviour {
 		// get the first math equation and set the text
 		equation = new MathEquation (increaseRange, level, MathEquation.EquationType.Addition);
 		mathProblem.text = equation.Num1 + " + " + equation.Num2 + " = ";
-
-		ani = GetComponent<Animator> ();
 	}
 
 	/// <summary>
@@ -102,7 +111,9 @@ public class MathProblem : MonoBehaviour {
 		{ // user answered correctly
 			
 			// play animation of treasure chest opening
-			ani.Play ("ChestAnimation", -1, 0f);
+			chestScript.Animate();
+			// play animation of coin going into score
+			coinScript.Animate ();
 
 			// generate a new math problem & update display
 			correctAnswers++;
@@ -122,7 +133,6 @@ public class MathProblem : MonoBehaviour {
 		{ // user answered incorrectly
 			InputFieldCO.ActivateInputField();
 		}
-
 	}
 
 }
