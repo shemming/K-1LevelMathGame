@@ -11,6 +11,7 @@ public class MathProblem : MonoBehaviour {
 	#region Variable Declararion
 	public Text mathProblem, userInput;
 	public Button enterButton;
+	public Text score;
 	private MathEquation equation;
 	private const string INPUT = "userInput";
 	private GameObject inputFieldGO;
@@ -37,13 +38,15 @@ public class MathProblem : MonoBehaviour {
 		InputFieldCO = inputFieldGO.GetComponent<InputField> ();
 
 		isFocused = false;
-		correctAnswers = 0;
 
+		correctAnswers = 0;
 		level = 1;
+
+		score.text = correctAnswers.ToString();
 		increaseRange = 10;
 
 		// get the first math equation and set the text
-		equation = new MathEquation (level, increaseRange, MathEquation.EquationType.Addition);
+		equation = new MathEquation (increaseRange, level, MathEquation.EquationType.Addition);
 		mathProblem.text = equation.Num1 + " + " + equation.Num2 + " = ";
 
 		ani = GetComponent<Animator> ();
@@ -97,8 +100,7 @@ public class MathProblem : MonoBehaviour {
 
 		if (input == equation.Sum) 
 		{ // user answered correctly
-			Debug.Log ("success");
-
+			
 			// play animation of treasure chest opening
 			ani.Play ("ChestAnimation", -1, 0f);
 
@@ -109,16 +111,15 @@ public class MathProblem : MonoBehaviour {
 			InputFieldCO.text = string.Empty;
 			InputFieldCO.ActivateInputField();
 
-			if (correctAnswers == 10)
+			if (correctAnswers % 10 == 0)
 			{
-				Debug.Log ("Next Level!");
 				equation.IncreaseLevel ();
 			}
 
+			score.text = correctAnswers.ToString();
 		} 
 		else 
 		{ // user answered incorrectly
-			Debug.Log ("failure");
 			InputFieldCO.ActivateInputField();
 		}
 
