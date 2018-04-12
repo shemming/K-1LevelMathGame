@@ -112,14 +112,13 @@ public class AdditionProblem : MonoBehaviour {
 		int.TryParse(InputFieldCO.text, out input);
 
 		if (input == equation.Sum) 
-		{ // user answered correctly
+		{ 
+			// user answered correctly
 
 			// play animation of treasure chest opening & coin going into scor
 			chestScript.Animate(CHEST_OPEN);
 			// play animation of coin going into score - wait until animation finishes
 			StartCoroutine(coinScript.AnimateAndWait (COIN_EARNED));
-
-
 
 			// generate a new math problem & update display
 			correctAnswers++;
@@ -136,7 +135,8 @@ public class AdditionProblem : MonoBehaviour {
 			score.text = correctAnswers.ToString();
 		} 
 		else 
-		{ // user answered incorrectly
+		{ 
+			// user answered incorrectly
 			InputFieldCO.ActivateInputField();
 			chestScript.Animate (CHEST_LOCKED);
 		}

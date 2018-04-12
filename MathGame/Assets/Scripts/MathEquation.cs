@@ -9,6 +9,9 @@ namespace AssemblyCSharp
 	public class MathEquation
 	{
 
+		/// <summary>
+		/// Determines what to do with the equation
+		/// </summary>
 		public enum EquationType {
 			Addition,
 			Subtraction
@@ -48,7 +51,7 @@ namespace AssemblyCSharp
 		public MathEquation (int increaseRange, int level, EquationType type)
 		{
 			this.equationType = type;
-			this.level = level;
+			Level = level;
 			this.increaseRange = increaseRange;
 
 			// randomly generate 2 numbers for the math problem
