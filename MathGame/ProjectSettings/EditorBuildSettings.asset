@@ -4,4 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Main Area.unity
+    guid: 57d3f949fd5da4faa84275398d96675e
+  - enabled: 1
+    path: Assets/Scenes/Addition.unity
+    guid: f856094137a98488abbedf4578c93fe5
+  - enabled: 1
+    path: Assets/Scenes/Subtraction.unity
+    guid: 7704dbb97ca5140639974914a1274dc0
+  - enabled: 1
+    path: Assets/Scenes/Counting.unity
+    guid: 3e9ec37a26d20424abd976e24c2248c1

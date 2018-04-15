@@ -30,7 +30,7 @@ public class PlayAnimation : MonoBehaviour
 	/// Play animation associated with the GameObject
 	/// this script is attached to & waits the length of the clip
 	/// </summary>
-	/// <returns>yeild instruction to wait for a given number of seconds</returns>
+	/// <returns>yield instruction to wait for a given number of seconds</returns>
 	/// <param name="stateName">name of the state (animation) to be played</param>
 	public IEnumerator AnimateAndWait(string stateName) 
 	{
@@ -45,7 +45,7 @@ public class PlayAnimation : MonoBehaviour
 			length = clip.length;
 		}
 
-		Debug.Log (length);
+//		Debug.Log (length);
 		yield return new WaitForSeconds (length);
 	}
 }

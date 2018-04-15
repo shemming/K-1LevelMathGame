@@ -4,32 +4,56 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using AssemblyCSharp;
+using UnityEngine.SceneManagement;
 
 
 public class AdditionProblem : MonoBehaviour {
 
 	#region Variable Declararion
-	public Text mathProblem, userInput;
+	//displays the current math problem
+	public Text mathProblem;
+
+	// displays what the user has currently typed
+	public Text userInput;
+
+	// triggers evaluation of what the user has entered
 	public Button enterButton;
 
+	// brings player back to the main area
+	public Button exitButton;
+
+	// displays the current score
 	public Text score;
+
+	// holds logic for the math equations player is to solve
 	private MathEquation equation;
 
+	// name of user input game object
 	private const string INPUT = "userInput";
+
+	// name of animations in animator controller
 	private const string CHEST_OPEN = "ChestAnimation";
 	private const string CHEST_LOCKED = "ChestLocked";
 	private const string COIN_EARNED = "CoinAnimation";
 
-	private GameObject inputFieldGO;
+	// holds input field component to get information on focus
+	// and set the visible text
 	private InputField InputFieldCO;
+
+	// holds whether the input field was in focus the previous frame
+	// allows user to press enter to submit their answer
 	private bool isFocused;
 
-	private int correctAnswers;
-	private int level;
-	private int increaseRange;
+	// used to update game information
+	public GameObject gameStatsGO;
+	private GlobalControl gameStats;
+	private MiniGame additionGame;
 
+	// used to allow coin animation on correct answers
 	public GameObject coinGO;
 	private PlayAnimation coinScript;
+
+	// used to allow chest animation on answer submission
 	public GameObject chestGO;
 	private PlayAnimation chestScript;
 	#endregion
@@ -39,30 +63,37 @@ public class AdditionProblem : MonoBehaviour {
 	/// </summary>
 	void Start ()
 	{
+		
 		// get access to script on Chest and Coin object to play it's animation
 		coinScript = coinGO.GetComponent<PlayAnimation> ();
 		chestScript = chestGO.GetComponent<PlayAnimation> ();
+
+		// get access to saved addition game info to update
+		gameStats = gameStatsGO.GetComponent<GlobalControl> ();
+		additionGame = gameStats.savedGameData.addition;
 
 		// add a listener for when user clicks enter button
 		enterButton
 			.onClick
 			.AddListener (CheckAnswer);
 
+		// add a listener for when user clicks exit button
+		exitButton
+			.onClick
+			.AddListener (ExitGame);
+
 		// get the input field as a game object and an input field object
-		inputFieldGO = GameObject.Find (INPUT);
+		GameObject inputFieldGO = GameObject.Find (INPUT);
 		InputFieldCO = inputFieldGO.GetComponent<InputField> ();
 
 		isFocused = false;
 
-		correctAnswers = 0;
-		level = 1;
 
-		score.text = correctAnswers.ToString();
-		increaseRange = 10;
+		score.text = additionGame.correctAnswers.ToString();
 
 		// get the first math equation and set the text
-		equation = new MathEquation (increaseRange, level, MathEquation.EquationType.Addition);
-		mathProblem.text = equation.Num1 + " + " + equation.Num2 + " = ";
+		equation = new MathEquation (additionGame.increaseRange, additionGame.level, MathEquation.EquationType.Addition);
+		mathProblem.text = equation.EquationString;
 	}
 
 	/// <summary>
@@ -70,7 +101,6 @@ public class AdditionProblem : MonoBehaviour {
 	/// </summary>
 	void Update () 
 	{
-		inputFieldGO = GameObject.Find (INPUT);
 
 		// if the user presses enter, take that as if they clicked the enter button
 		// check if the answer is correct
@@ -121,18 +151,20 @@ public class AdditionProblem : MonoBehaviour {
 			StartCoroutine(coinScript.AnimateAndWait (COIN_EARNED));
 
 			// generate a new math problem & update display
-			correctAnswers++;
+			additionGame.correctAnswers++;
 			equation.GenerateNewEquation ();
-			mathProblem.text = equation.Num1 + " + " + equation.Num2 + " = ";
+			mathProblem.text = equation.EquationString;
 			InputFieldCO.text = string.Empty;
 			InputFieldCO.ActivateInputField();
 
-			if (correctAnswers % 10 == 0)
+			if (additionGame.correctAnswers % 10 == 0)
 			{
+				
 				equation.IncreaseLevel ();
+				additionGame.level = equation.Level;
 			}
 
-			score.text = correctAnswers.ToString();
+			score.text = additionGame.correctAnswers.ToString();
 		} 
 		else 
 		{ 
@@ -142,5 +174,9 @@ public class AdditionProblem : MonoBehaviour {
 		}
 	}
 
-
+	void ExitGame() 
+	{
+		gameStats.SavePlayer ();
+		SceneManager.LoadScene("Main Area");
+	}
 }

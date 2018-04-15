@@ -4,17 +4,30 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	//Floating point variable to store the player's movement speed.
+	/// <summary>
+	/// Floating point variable to store the player's movement speed.
+	/// </summary>
 	public float speed;             
 
-	//Store a reference to the Rigidbody2D component required to use 2D Physics.
-	private Rigidbody2D rb2d;       
-	// Store a reference to the animator controller to animate movement
+	/// <summary>
+	/// Store a reference to the Rigidbody2D component required to use 2D Physics.
+	/// </summary>
+	private Rigidbody2D rb2d;  
+
+	/// <summary>
+	/// Store a reference to the animator controller to animate movement
+	/// </summary>
 	private Animator ani;
-	// Holds if the character was last moving right or left
+
+	/// <summary>
+	/// Bools left and right hold if the character was last moving right or left
+	/// </summary>
 	private bool left, right;
 
-	// Use this for initialization
+
+	/// <summary>
+	/// Used for initialization
+	/// </summary>
 	void Start()
 	{
 		//Get and store a reference to the Rigidbody2D component 
@@ -23,10 +36,15 @@ public class PlayerController : MonoBehaviour {
 		// Get and store a reference to the animator controller
 		ani = GetComponent<Animator> ();
 
+		// set the direction the player will face on first move if player moves
+		// up or down first
 		left = false;
-		right = false;
+		right = true;
 	}
 
+	/// <summary>
+	/// Update is called once per frame, used for player animation
+	/// </summary>
 	void Update() 
 	{
 		// set bool to know the last left or right arrow clicked if going up or down
@@ -63,6 +81,9 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Called every fixed framerate frame. Should be used instead of Update when dealing with Rigidbody.
+	/// </summary>
 	void FixedUpdate() 
 	{
 		//Store the current horizontal input in the float moveHorizontal.
@@ -77,4 +98,5 @@ public class PlayerController : MonoBehaviour {
 		//Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
 		rb2d.AddForce (movement * speed);
 	}
+
 }

@@ -75,6 +75,21 @@ namespace AssemblyCSharp
 			get { return num2; }
 		}
 
+		public string EquationString 
+		{
+			get 
+			{ 
+				if (equationType == EquationType.Addition)
+				{
+					return num1.ToString () + " + " + num2.ToString () + " = "; 
+				}
+				else
+				{
+					return num1.ToString () + " - " + num2.ToString () + " = "; 
+				}
+			}
+		}
+
 		/// <summary>
 		/// Gets the sum.
 		/// </summary>

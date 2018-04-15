@@ -4,32 +4,57 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using AssemblyCSharp;
+using UnityEngine.SceneManagement;
 
 
 public class SubtractionProblem : MonoBehaviour {
 
 	#region Variable Declararion
-	public Text mathProblem, userInput;
+	//displays the current math problem
+	public Text mathProblem;
+
+	// displays what the user has currently typed
+	public Text userInput;
+
+	// triggers evaluation of what the user has entered
 	public Button enterButton;
 
+	// brings player back to the main area
+	public Button exitButton;
+
+	// displays the current score
 	public Text score;
+
+	// holds logic for the math equations player is to solve
 	private MathEquation equation;
 
+	// name of user input game object
 	private const string INPUT = "userInput";
+
+	// name of animations in animator controller
 	private const string CHEST_OPEN = "ChestAnimation";
 	private const string CHEST_LOCKED = "ChestLocked";
 	private const string COIN_EARNED = "CoinAnimation";
 
+	// holds input field component to get information on focus
+	// and set the visible text
 	private GameObject inputFieldGO;
 	private InputField InputFieldCO;
+
+	// holds whether the input field was in focus the previous frame
+	// allows user to press enter to submit their answer
 	private bool isFocused;
 
-	private int correctAnswers;
-	private int level;
-	private int increaseRange;
+	// used to update game information
+	public GameObject gameStatsGO;
+	private GlobalControl gameStats;
+	private MiniGame subtractionGame;
 
+	// used to allow coin animation on correct answers
 	public GameObject coinGO;
 	private PlayAnimation coinScript;
+
+	// used to allow chest animation on answer submission
 	public GameObject chestGO;
 	private PlayAnimation chestScript;
 	#endregion
@@ -43,10 +68,19 @@ public class SubtractionProblem : MonoBehaviour {
 		coinScript = coinGO.GetComponent<PlayAnimation> ();
 		chestScript = chestGO.GetComponent<PlayAnimation> ();
 
+		// get access to saved addition game info to update
+		gameStats = gameStatsGO.GetComponent<GlobalControl> ();
+		subtractionGame = gameStats.savedGameData.subtraction;
+
 		// add a listener for when user clicks enter button
 		enterButton
 			.onClick
 			.AddListener (CheckAnswer);
+
+		// add a listener for when user clicks exit button
+		exitButton
+			.onClick
+			.AddListener (ExitGame);
 
 		// get the input field as a game object and an input field object
 		inputFieldGO = GameObject.Find (INPUT);
@@ -54,15 +88,11 @@ public class SubtractionProblem : MonoBehaviour {
 
 		isFocused = false;
 
-		correctAnswers = 0;
-		level = 1;
-
-		score.text = correctAnswers.ToString();
-		increaseRange = 10;
+		score.text = subtractionGame.correctAnswers.ToString();
 
 		// get the first math equation and set the text
-		equation = new MathEquation (increaseRange, level, MathEquation.EquationType.Subtraction);
-		mathProblem.text = equation.Num1 + " - " + equation.Num2 + " = ";
+		equation = new MathEquation (subtractionGame.increaseRange, subtractionGame.level, MathEquation.EquationType.Subtraction);
+		mathProblem.text = equation.EquationString;
 	}
 
 	/// <summary>
@@ -122,23 +152,30 @@ public class SubtractionProblem : MonoBehaviour {
 
 
 			// generate a new math problem & update display
-			correctAnswers++;
+			subtractionGame.correctAnswers++;
 			equation.GenerateNewEquation ();
-			mathProblem.text = equation.Num1 + " - " + equation.Num2 + " = ";
+			mathProblem.text = equation.EquationString;
 			InputFieldCO.text = string.Empty;
 			InputFieldCO.ActivateInputField();
 
-			if (correctAnswers % 10 == 0)
+			if (subtractionGame.correctAnswers % 10 == 0)
 			{
 				equation.IncreaseLevel ();
+				subtractionGame.level = equation.Level;
 			}
 
-			score.text = correctAnswers.ToString();
+			score.text = subtractionGame.correctAnswers.ToString();
 		} 
 		else 
 		{ // user answered incorrectly
 			InputFieldCO.ActivateInputField();
 			chestScript.Animate (CHEST_LOCKED);
 		}
+	}
+
+	private void ExitGame() 
+	{
+		gameStats.SavePlayer ();
+		SceneManager.LoadScene("Main Area");
 	}
 }
