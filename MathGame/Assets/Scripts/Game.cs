@@ -2,6 +2,9 @@
 
 namespace AssemblyCSharp
 {
+	/// <summary>
+	/// Holds data for one game
+	/// </summary>
 	[System.Serializable]
 	public class Game
 	{

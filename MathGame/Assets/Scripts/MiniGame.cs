@@ -5,6 +5,9 @@ using AssemblyCSharp;
 
 namespace AssemblyCSharp
 {
+	/// <summary>
+	/// Holds data for one mini game (adding, subtracting, etc.)
+	/// </summary>
 	[System.Serializable]
 	public class MiniGame
 	{

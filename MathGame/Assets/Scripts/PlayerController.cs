@@ -65,19 +65,19 @@ public class PlayerController : MonoBehaviour {
 			((Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.DownArrow)) && left))
 		{
 			rb2d.transform.eulerAngles = new Vector3(0, 180, 0);
-			ani.SetBool ("walkRight", true);
+			ani.SetBool ("walk", true);
 		}
 		// if right arrow is being clicked or up/down arrow is being clicked and right arrow was clicked last
 		else if (Input.GetKey (KeyCode.RightArrow) ||
 			((Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.DownArrow)) && right))
 		{
 			rb2d.transform.eulerAngles = new Vector3(0, 0, 0);
-			ani.SetBool ("walkRight", true);
+			ani.SetBool ("walk", true);
 		}
 		// character is not moving
 		else
 		{
-			ani.SetBool ("walkRight", false);
+			ani.SetBool ("walk", false);
 		}
 	}
 
