@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4554834859647198}
-  - component: {fileID: 114270053311501924}
+  - component: {fileID: 114571602786447384}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114270053311501924
+--- !u!114 &114571602786447384
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -54,13 +54,13 @@ MonoBehaviour:
   savedGameData:
     addition:
       correctAnswers: 0
-      level: 0
+      level: 1
       increaseRange: 10
     subtraction:
       correctAnswers: 0
-      level: 0
+      level: 1
       increaseRange: 10
     counting:
       correctAnswers: 0
-      level: 0
+      level: 1
       increaseRange: 10

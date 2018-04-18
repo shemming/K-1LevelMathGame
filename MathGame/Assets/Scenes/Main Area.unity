@@ -10910,6 +10910,7 @@ GameObject:
   - component: {fileID: 1579107784}
   - component: {fileID: 1579107788}
   - component: {fileID: 1579107789}
+  - component: {fileID: 1579107790}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -11006,6 +11007,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1781223455134418, guid: 55e012f56e1ae45af8b2f08370810b6c,
     type: 2}
+--- !u!114 &1579107790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1579107783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d912b45a42d4c67bcd5038ab9f27d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameStatsGO: {fileID: 1781223455134418, guid: 55e012f56e1ae45af8b2f08370810b6c,
+    type: 2}
+  saveQuit: {fileID: 2140625309}
 --- !u!1001 &1588748400
 Prefab:
   m_ObjectHideFlags: 0
@@ -14358,7 +14373,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   area: Counting
-  saveQuit: {fileID: 2140625309}
 --- !u!61 &1806744715
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15204,7 +15218,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   area: Addition
-  saveQuit: {fileID: 2140625309}
 --- !u!61 &1915338017
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15272,7 +15285,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   area: Subtraction
-  saveQuit: {fileID: 2140625309}
 --- !u!61 &1916008160
 BoxCollider2D:
   m_ObjectHideFlags: 0

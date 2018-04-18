@@ -6,21 +6,11 @@ using UnityEngine.UI;
 using AssemblyCSharp;
 
 public class MainAreaTriggers : MonoBehaviour {
-	public string area;
-
-	// triggers SaveQuit function, which saves current game info and 
-	// loads the main menu screen
-	public Button saveQuit;
 
 	/// <summary>
-	/// Use this for initialization
+	/// holds the name of the scene to be loaded
 	/// </summary>
-	public void Start() {
-		// add a listener for when user clicks enter button
-		saveQuit
-			.onClick
-			.AddListener (SaveQuit);
-	}
+	public string area;
 
 	/// <summary>
 	/// Loads the scene the player is walking into 
@@ -30,11 +20,4 @@ public class MainAreaTriggers : MonoBehaviour {
 		SceneManager.LoadScene(area);
 	}
 
-	/// <summary>
-	/// Save game progress and return to the main menu
-	/// </summary>
-	private void SaveQuit() {
-		GlobalControl.Save ();
-		SceneManager.LoadScene ("MainMenu");
-	}
 }

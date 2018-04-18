@@ -174,6 +174,9 @@ public class MainMenu : MonoBehaviour
 			// checks if there is a file with the save name already in the directory
 			if (!File.Exists (path))
 			{
+				// start a new game in case player just exited a different game
+				GlobalControl.Instance.savedGameData = new Game ();
+
 				// saves file and loads the main area to begin playing
 				GlobalControl.Save (name);
 				SceneManager.LoadScene("Main Area");

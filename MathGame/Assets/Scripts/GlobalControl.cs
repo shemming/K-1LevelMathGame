@@ -19,6 +19,7 @@ public class GlobalControl : MonoBehaviour {
 		if (Instance == null)
 		{
 			Instance = this;
+			DontDestroyOnLoad (gameObject);
 		}
 		else if (Instance != this)
 		{
@@ -26,30 +27,29 @@ public class GlobalControl : MonoBehaviour {
 			//the other object will be destroyed and this one saved
 			Destroy (gameObject);
 		}
-		DontDestroyOnLoad (gameObject);
 	}
 
 	/// <summary>
 	/// Store all game data to carry around
 	/// </summary>
-	void Start() 
+	public void LoadPlayer() 
 	{
 		savedGameData = new Game ();
 
 		// save all addition game data
-		savedGameData.addition.correctAnswers = GlobalControl.Instance.savedGameData.addition.correctAnswers;
-		savedGameData.addition.increaseRange = GlobalControl.Instance.savedGameData.addition.increaseRange;
-		savedGameData.addition.level = GlobalControl.Instance.savedGameData.addition.level;
+		savedGameData.addition.correctAnswers = Instance.savedGameData.addition.correctAnswers;
+		savedGameData.addition.increaseRange = Instance.savedGameData.addition.increaseRange;
+		savedGameData.addition.level = Instance.savedGameData.addition.level;
 
 		// save all subtraction game data
-		savedGameData.subtraction.correctAnswers = GlobalControl.Instance.savedGameData.subtraction.correctAnswers;
-		savedGameData.subtraction.increaseRange = GlobalControl.Instance.savedGameData.subtraction.increaseRange;
-		savedGameData.subtraction.level = GlobalControl.Instance.savedGameData.subtraction.level;
+		savedGameData.subtraction.correctAnswers = Instance.savedGameData.subtraction.correctAnswers;
+		savedGameData.subtraction.increaseRange = Instance.savedGameData.subtraction.increaseRange;
+		savedGameData.subtraction.level = Instance.savedGameData.subtraction.level;
 
 		// save all counting game data
-		savedGameData.counting.correctAnswers = GlobalControl.Instance.savedGameData.counting.correctAnswers;
-		savedGameData.counting.increaseRange = GlobalControl.Instance.savedGameData.counting.increaseRange;
-		savedGameData.counting.level = GlobalControl.Instance.savedGameData.counting.level;
+		savedGameData.counting.correctAnswers = Instance.savedGameData.counting.correctAnswers;
+		savedGameData.counting.increaseRange = Instance.savedGameData.counting.increaseRange;
+		savedGameData.counting.level = Instance.savedGameData.counting.level;
 	}
 
 	/// <summary>
@@ -58,19 +58,19 @@ public class GlobalControl : MonoBehaviour {
 	public void SavePlayer() {
 		
 		// save all addition game data
-		GlobalControl.Instance.savedGameData.addition.correctAnswers = savedGameData.addition.correctAnswers;
-		GlobalControl.Instance.savedGameData.addition.increaseRange = savedGameData.addition.increaseRange;
-		GlobalControl.Instance.savedGameData.addition.level = savedGameData.addition.level;
+		Instance.savedGameData.addition.correctAnswers = savedGameData.addition.correctAnswers;
+		Instance.savedGameData.addition.increaseRange = savedGameData.addition.increaseRange;
+		Instance.savedGameData.addition.level = savedGameData.addition.level;
 
 		// save all subtraction game data
-		GlobalControl.Instance.savedGameData.subtraction.correctAnswers = savedGameData.subtraction.correctAnswers;
-		GlobalControl.Instance.savedGameData.subtraction.increaseRange = savedGameData.subtraction.increaseRange;
-		GlobalControl.Instance.savedGameData.subtraction.level = savedGameData.subtraction.level;
+		Instance.savedGameData.subtraction.correctAnswers = savedGameData.subtraction.correctAnswers;
+		Instance.savedGameData.subtraction.increaseRange = savedGameData.subtraction.increaseRange;
+		Instance.savedGameData.subtraction.level = savedGameData.subtraction.level;
 
 		// save all counting game data
-		GlobalControl.Instance.savedGameData.counting.correctAnswers = savedGameData.counting.correctAnswers;
-		GlobalControl.Instance.savedGameData.counting.increaseRange = savedGameData.counting.increaseRange;
-		GlobalControl.Instance.savedGameData.counting.level = savedGameData.counting.level;
+		Instance.savedGameData.counting.correctAnswers = savedGameData.counting.correctAnswers;
+		Instance.savedGameData.counting.increaseRange = savedGameData.counting.increaseRange;
+		Instance.savedGameData.counting.level = savedGameData.counting.level;
 
 	}
 
@@ -87,11 +87,10 @@ public class GlobalControl : MonoBehaviour {
 			Instance.filename = s_filename;
 		}
 
-		// create a file with the given filename and save serialized game data
-		BinaryFormatter bf = new BinaryFormatter ();
-		FileStream file = File.Create(Application.persistentDataPath + "/" + Instance.filename + ".gd");
-		bf.Serialize (file, Instance.savedGameData);
-		file.Close ();
+		// creates file, creates json string out of game data, and writes json string to the new file
+		string path = Application.persistentDataPath + "/" + Instance.filename + ".gd";
+		string json = JsonUtility.ToJson (Instance.savedGameData);
+		File.WriteAllText (@path, json);
 	}
 
 	/// <summary>
@@ -99,21 +98,21 @@ public class GlobalControl : MonoBehaviour {
 	/// </summary>
 	/// <param name="s_filename">the name of the file being loaded</param>
 	public static void Load(string s_filename = null) {
-		
+
 		// set the instance's file name if not already for future use
 		if (s_filename != null)
 		{
 			Instance.filename = s_filename;
 		}
 
+		string path = Application.persistentDataPath + "/" + Instance.filename + ".gd";
+
 		// ensures the file was found
-		if(File.Exists(Application.persistentDataPath + "/" + Instance.filename + ".gd")) {
-			
-			// deserialize file and store for future use
-			BinaryFormatter bf = new BinaryFormatter();
-			FileStream file = File.Open(Application.persistentDataPath + "/" + Instance.filename + ".gd", FileMode.Open);
-			Instance.savedGameData = (Game)bf.Deserialize(file);
-			file.Close();
+		if (File.Exists (path))
+		{
+			// reads file to get json object and converts into game object to store data
+			string json = File.ReadAllText (path);
+			Instance.savedGameData = JsonUtility.FromJson<Game> (json);
 		}
 	}
 }
