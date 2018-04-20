@@ -43,9 +43,6 @@ public class CountingGame : MonoBehaviour {
 	private GlobalControl gameStats;
 	private MiniGame countingGame;
 
-	// name of user input game object
-	private const string INPUT = "userInput";
-
 	// Generates random numbers
 	private System.Random rnd;
 	#endregion
@@ -60,7 +57,7 @@ public class CountingGame : MonoBehaviour {
 		countingGame = gameStats.savedGameData.counting;
 
 		// get the input field as a game object and an input field object
-		GameObject inputFieldGO = GameObject.Find (INPUT);
+		GameObject inputFieldGO = GameObject.Find (Constants.INPUT);
 		InputFieldCO = inputFieldGO.GetComponent<InputField> ();
 
 
@@ -79,7 +76,7 @@ public class CountingGame : MonoBehaviour {
 		rnd = new System.Random ();
 
 		//gets an array of all the flowers in the scene
-		flowers = GameObject.FindGameObjectsWithTag ("Flower");
+		flowers = GameObject.FindGameObjectsWithTag (Constants.Counting.FLOWER_TAG);
 
 
 		counter = new Counter (level: countingGame.level);
@@ -194,6 +191,6 @@ public class CountingGame : MonoBehaviour {
 	void ExitGame() 
 	{
 		gameStats.SavePlayer ();
-		SceneManager.LoadScene("Main Area");
+		SceneManager.LoadScene(Constants.SceneNames.MAIN_AREA);
 	}
 }

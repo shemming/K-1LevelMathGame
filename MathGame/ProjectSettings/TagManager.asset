@@ -5,6 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Flower
+  - Addition1
+  - Addition2
+  - Addition3
+  - Counting1
+  - Counting2
+  - Counting3
+  - Subtraction1
+  - Subtraction2
+  - Subtraction3
   layers:
   - Default
   - TransparentFX

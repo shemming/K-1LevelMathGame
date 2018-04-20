@@ -28,14 +28,6 @@ public class AdditionProblem : MonoBehaviour {
 	// holds logic for the math equations player is to solve
 	private MathEquation equation;
 
-	// name of user input game object
-	private const string INPUT = "userInput";
-
-	// name of animations in animator controller
-	private const string CHEST_OPEN = "ChestAnimation";
-	private const string CHEST_LOCKED = "ChestLocked";
-	private const string COIN_EARNED = "CoinAnimation";
-
 	// holds input field component to get information on focus
 	// and set the visible text
 	private InputField InputFieldCO;
@@ -83,7 +75,7 @@ public class AdditionProblem : MonoBehaviour {
 			.AddListener (ExitGame);
 
 		// get the input field as a game object and an input field object
-		GameObject inputFieldGO = GameObject.Find (INPUT);
+		GameObject inputFieldGO = GameObject.Find (Constants.INPUT);
 		InputFieldCO = inputFieldGO.GetComponent<InputField> ();
 
 		isFocused = false;
@@ -146,9 +138,9 @@ public class AdditionProblem : MonoBehaviour {
 			// user answered correctly
 
 			// play animation of treasure chest opening & coin going into scor
-			chestScript.Animate(CHEST_OPEN);
+			chestScript.Animate(Constants.Addition.CHEST_OPEN_ANIMATION);
 			// play animation of coin going into score - wait until animation finishes
-			StartCoroutine(coinScript.AnimateAndWait (COIN_EARNED));
+			StartCoroutine(coinScript.AnimateAndWait (Constants.Addition.COIN_EARNED_ANIMATION));
 
 			// generate a new math problem & update display
 			additionGame.correctAnswers++;
@@ -170,13 +162,13 @@ public class AdditionProblem : MonoBehaviour {
 		{ 
 			// user answered incorrectly
 			InputFieldCO.ActivateInputField();
-			chestScript.Animate (CHEST_LOCKED);
+			chestScript.Animate (Constants.Addition.CHEST_LOCKED_ANIMATION);
 		}
 	}
 
 	void ExitGame() 
 	{
 		gameStats.SavePlayer ();
-		SceneManager.LoadScene("Main Area");
+		SceneManager.LoadScene(Constants.SceneNames.MAIN_AREA);
 	}
 }

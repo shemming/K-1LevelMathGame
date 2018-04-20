@@ -22,12 +22,12 @@ public class CameraController : MonoBehaviour {
 	/// <summary>
 	/// The size of the map in terms of X axis
 	/// </summary>
-	float mapX = 17.92f;
+	private const float MAP_X = 17.92f;
 
 	/// <summary>
 	/// The size of the map in terms of Y axis
 	/// </summary>
-	float mapY = 10.24f;
+	private const float MAP_Y = 10.24f;
 
 	/// <summary>
 	/// Stores the min X coordinates for the camera
@@ -58,10 +58,10 @@ public class CameraController : MonoBehaviour {
 		var horzExtent = vertExtent * Screen.width / Screen.height;
 
 		// Calculations assume map is position at the origin
-		minX = horzExtent - mapX / 2.0f;
-		maxX = mapX / 2.0f - horzExtent;
-		minY = vertExtent - mapY / 2.0f;
-		maxY = mapY / 2.0f - vertExtent;
+		minX = horzExtent - MAP_X / 2.0f;
+		maxX = MAP_X / 2.0f - horzExtent;
+		minY = vertExtent - MAP_Y / 2.0f;
+		maxY = MAP_Y / 2.0f - vertExtent;
 
 		// Calculate and store the offset value by getting the distance between the player's position and camera's position.
 		offset = transform.position - player.transform.position;

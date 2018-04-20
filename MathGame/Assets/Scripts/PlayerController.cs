@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AssemblyCSharp;
 
 public class PlayerController : MonoBehaviour {
 
@@ -65,19 +66,19 @@ public class PlayerController : MonoBehaviour {
 			((Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.DownArrow)) && left))
 		{
 			rb2d.transform.eulerAngles = new Vector3(0, 180, 0);
-			ani.SetBool ("walk", true);
+			ani.SetBool (Constants.PlayerController.WALK_ANIMATION, true);
 		}
 		// if right arrow is being clicked or up/down arrow is being clicked and right arrow was clicked last
 		else if (Input.GetKey (KeyCode.RightArrow) ||
 			((Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.DownArrow)) && right))
 		{
 			rb2d.transform.eulerAngles = new Vector3(0, 0, 0);
-			ani.SetBool ("walk", true);
+			ani.SetBool (Constants.PlayerController.WALK_ANIMATION, true);
 		}
 		// character is not moving
 		else
 		{
-			ani.SetBool ("walk", false);
+			ani.SetBool (Constants.PlayerController.WALK_ANIMATION, false);
 		}
 	}
 
@@ -87,10 +88,10 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate() 
 	{
 		//Store the current horizontal input in the float moveHorizontal.
-		float moveHorizontal = Input.GetAxis ("Horizontal");
+		float moveHorizontal = Input.GetAxis (Constants.PlayerController.HORIZ_AXIS);
 
 		//Store the current vertical input in the float moveVertical.
-		float moveVertical = Input.GetAxis ("Vertical");
+		float moveVertical = Input.GetAxis (Constants.PlayerController.VERT_AXIS);
 
 		//Use the two store floats to create a new Vector2 variable movement.
 		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);

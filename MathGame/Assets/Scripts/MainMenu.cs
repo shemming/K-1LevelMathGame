@@ -45,9 +45,9 @@ public class MainMenu : MonoBehaviour
 	{
 		
 		// get a reference to the different screens available
-		welcomeScreen = GameObject.Find("StartingScreen");
-		newGameScreen = GameObject.Find ("NewGameScreen");
-		continueGameScreen = GameObject.Find ("ContinueGameScreen");
+		welcomeScreen = GameObject.Find(Constants.MainMenu.Views.WELCOME_SCREEN);
+		newGameScreen = GameObject.Find (Constants.MainMenu.Views.NEW_SCREEN);
+		continueGameScreen = GameObject.Find (Constants.MainMenu.Views.CONTINUE_SCREEN);
 
 		// have only the welcome screen visible when starting
 		backButton.gameObject.SetActive (false);
@@ -124,13 +124,13 @@ public class MainMenu : MonoBehaviour
 
 		List<string> filenames = Directory.GetFiles(Application.persistentDataPath)
 			.Select(file => Path.GetFileName(file))
-			.Where(file => file.Contains(".gd"))
+			.Where(file => file.Contains(Constants.MainMenu.FILE_EXTENSION))
 			.ToList();
 
 		// remove extension for display
 		for (int i = 0; i < filenames.Count; i++) 
 		{
-			filenames[i] = filenames[i].Replace (".gd", "");
+			filenames[i] = filenames[i].Replace (Constants.MainMenu.FILE_EXTENSION, "");
 		}
 
 		// add all the file names to the dropdown menu
@@ -153,7 +153,7 @@ public class MainMenu : MonoBehaviour
 	private void ContinueGame() 
 	{
 		GlobalControl.Load (continueFromFilename);
-		SceneManager.LoadScene("Main Area");
+		SceneManager.LoadScene(Constants.SceneNames.MAIN_AREA);
 	}
 
 	/// <summary>
@@ -162,14 +162,13 @@ public class MainMenu : MonoBehaviour
 	private void SaveAndContinue() 
 	{
 
-		GameObject tmp = GameObject.Find("ErrorMessage");
-		Text errorMsg = tmp.GetComponent<Text> ();
-		string name = userSaveNameInput.text;
+		Text errorMsg = GameObject.Find(Constants.MainMenu.ERROR_TEXT_GO).GetComponent<Text>();
+		string filename = userSaveNameInput.text;
 
 		// make sure there are no unacceptable characters in user input
-		if (isValidGameName(name)) {
+		if (isValidGameName(filename)) {
 			
-			string path = Application.persistentDataPath + "/" + name + ".gd";
+			string path = Application.persistentDataPath + "/" + filename + Constants.MainMenu.FILE_EXTENSION;
 
 			// checks if there is a file with the save name already in the directory
 			if (!File.Exists (path))
@@ -178,17 +177,17 @@ public class MainMenu : MonoBehaviour
 				GlobalControl.Instance.savedGameData = new Game ();
 
 				// saves file and loads the main area to begin playing
-				GlobalControl.Save (name);
-				SceneManager.LoadScene("Main Area");
+				GlobalControl.Save (filename);
+				SceneManager.LoadScene(Constants.SceneNames.MAIN_AREA);
 			}
 			else
 			{
-				errorMsg.text = "A file already exists with this name.";
+				errorMsg.text = Constants.MainMenu.Error.EXISTS;
 			}
 		}
 		else {
 			// display error message to user
-			errorMsg.text = "Sorry, that file name can not be used. Try again.";
+			errorMsg.text = Constants.MainMenu.Error.GENERIC;
 		}
 	}
 
