@@ -19,6 +19,7 @@ namespace AssemblyCSharp
 			public const string COUNTING = "Counting";
 			public const string ADDITION = "Addition";
 			public const string SUBTRACTION = "Subtraction";
+			public const string CHALLENGE = "Challenge";
 		}	
 
 		/// <summary>

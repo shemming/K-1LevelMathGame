@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 
 
 public class AdditionProblem : MonoBehaviour {
-
-	#region Variable Declararion
+	
+	#region Variable Declaration
 	//displays the current math problem
 	public Text mathProblem;
 
@@ -139,6 +139,7 @@ public class AdditionProblem : MonoBehaviour {
 
 			// play animation of treasure chest opening & coin going into scor
 			chestScript.Animate(Constants.Addition.CHEST_OPEN_ANIMATION);
+
 			// play animation of coin going into score - wait until animation finishes
 			StartCoroutine(coinScript.AnimateAndWait (Constants.Addition.COIN_EARNED_ANIMATION));
 
@@ -149,6 +150,7 @@ public class AdditionProblem : MonoBehaviour {
 			InputFieldCO.text = string.Empty;
 			InputFieldCO.ActivateInputField();
 
+			// if player answers 10 questions right, they move to the next level
 			if (additionGame.correctAnswers % 10 == 0)
 			{
 				
@@ -156,6 +158,7 @@ public class AdditionProblem : MonoBehaviour {
 				additionGame.level = equation.Level;
 			}
 
+			// update score on the screen
 			score.text = additionGame.correctAnswers.ToString();
 		} 
 		else 
@@ -166,6 +169,9 @@ public class AdditionProblem : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Save game data and return to the welcome screen of the main menu
+	/// </summary>
 	void ExitGame() 
 	{
 		gameStats.SavePlayer ();

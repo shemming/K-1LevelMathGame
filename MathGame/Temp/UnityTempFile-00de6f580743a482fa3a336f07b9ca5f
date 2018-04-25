@@ -184,6 +184,8 @@
 -define:UNITY_TEAM_LICENSE
 'Assets/Scripts/AdditionProblem.cs'
 'Assets/Scripts/CameraController.cs'
+'Assets/Scripts/Challenges.cs'
+'Assets/Scripts/Constants.cs'
 'Assets/Scripts/Counter.cs'
 'Assets/Scripts/CountingGame.cs'
 'Assets/Scripts/Game.cs'
@@ -197,6 +199,7 @@
 'Assets/Scripts/PlayAnimation.cs'
 'Assets/Scripts/PlayerController.cs'
 'Assets/Scripts/SubtractionProblem.cs'
+'Assets/Scripts/TimedChallenge.cs'
 -r:'/Applications/Unity/Unity.app/Contents/Mono/lib/mono/unity/System.Runtime.Serialization.dll'
 -r:'/Applications/Unity/Unity.app/Contents/Mono/lib/mono/unity/System.Xml.Linq.dll'
 -r:'/Applications/Unity/Unity.app/Contents/Mono/lib/mono/unity/UnityScript.dll'

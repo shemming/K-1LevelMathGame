@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class SubtractionProblem : MonoBehaviour {
 
-	#region Variable Declararion
+	#region Variable Declaration
 	//displays the current math problem
 	public Text mathProblem;
 
@@ -137,6 +137,7 @@ public class SubtractionProblem : MonoBehaviour {
 
 			// play animation of treasure chest opening & coin going into scor
 			chestScript.Animate(Constants.Subtraction.CHEST_OPEN_ANIMATION);
+
 			// play animation of coin going into score - wait until animation finishes
 			StartCoroutine(coinScript.AnimateAndWait (Constants.Subtraction.COIN_EARNED_ANIMATION));
 
@@ -151,12 +152,14 @@ public class SubtractionProblem : MonoBehaviour {
 
 			Debug.Log ("Answer: " + equation.Difference);
 
+			// if player answers 10 questions right, they move to the next level
 			if (subtractionGame.correctAnswers % 10 == 0)
 			{
 				equation.IncreaseLevel ();
 				subtractionGame.level = equation.Level;
 			}
 
+			// update score on the screen
 			score.text = subtractionGame.correctAnswers.ToString();
 		} 
 		else 
@@ -166,6 +169,9 @@ public class SubtractionProblem : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Save game data and return to the welcome screen of the main menu
+	/// </summary>
 	private void ExitGame() 
 	{
 		gameStats.SavePlayer ();

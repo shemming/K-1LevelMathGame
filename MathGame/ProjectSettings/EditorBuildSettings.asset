@@ -17,3 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Counting.unity
     guid: 3e9ec37a26d20424abd976e24c2248c1
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 9b417900be71f44b8a93496acd96d545
+  - enabled: 1
+    path: Assets/Scenes/Challenge.unity
+    guid: 396d3390285844263a218ec364341005

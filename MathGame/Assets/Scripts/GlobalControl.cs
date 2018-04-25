@@ -50,6 +50,14 @@ public class GlobalControl : MonoBehaviour {
 		savedGameData.counting.correctAnswers = Instance.savedGameData.counting.correctAnswers;
 		savedGameData.counting.increaseRange = Instance.savedGameData.counting.increaseRange;
 		savedGameData.counting.level = Instance.savedGameData.counting.level;
+
+		savedGameData.additionChallenge.l1HighScore = Instance.savedGameData.additionChallenge.l1HighScore;
+		savedGameData.additionChallenge.l2HighScore = Instance.savedGameData.additionChallenge.l2HighScore;
+		savedGameData.additionChallenge.l3HighScore = Instance.savedGameData.additionChallenge.l3HighScore;
+
+		savedGameData.subtractionChallenge.l1HighScore = Instance.savedGameData.subtractionChallenge.l1HighScore;
+		savedGameData.subtractionChallenge.l2HighScore = Instance.savedGameData.subtractionChallenge.l2HighScore;
+		savedGameData.subtractionChallenge.l3HighScore = Instance.savedGameData.subtractionChallenge.l3HighScore;
 	}
 
 	/// <summary>
@@ -71,6 +79,16 @@ public class GlobalControl : MonoBehaviour {
 		Instance.savedGameData.counting.correctAnswers = savedGameData.counting.correctAnswers;
 		Instance.savedGameData.counting.increaseRange = savedGameData.counting.increaseRange;
 		Instance.savedGameData.counting.level = savedGameData.counting.level;
+
+		Debug.Log (savedGameData.additionChallenge.l1HighScore);
+
+		Instance.savedGameData.additionChallenge.l1HighScore = savedGameData.additionChallenge.l1HighScore;
+		Instance.savedGameData.additionChallenge.l2HighScore = savedGameData.additionChallenge.l2HighScore;
+		Instance.savedGameData.additionChallenge.l3HighScore = savedGameData.additionChallenge.l3HighScore;
+
+		Instance.savedGameData.subtractionChallenge.l1HighScore = savedGameData.subtractionChallenge.l1HighScore;
+		Instance.savedGameData.subtractionChallenge.l2HighScore = savedGameData.subtractionChallenge.l2HighScore;
+		Instance.savedGameData.subtractionChallenge.l3HighScore = savedGameData.subtractionChallenge.l3HighScore;
 
 	}
 
