@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using AssemblyCSharp;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using AssemblyCSharp;
 
 public class MainAreaDesign : MonoBehaviour
 {

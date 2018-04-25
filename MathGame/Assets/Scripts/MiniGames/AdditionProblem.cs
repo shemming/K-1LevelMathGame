@@ -1,14 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System;
-using UnityEngine;
-using UnityEngine.UI;
 using AssemblyCSharp;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
-public class SubtractionProblem : MonoBehaviour {
-
+public class AdditionProblem : MonoBehaviour {
+	
 	#region Variable Declaration
 	//displays the current math problem
 	public Text mathProblem;
@@ -30,7 +30,6 @@ public class SubtractionProblem : MonoBehaviour {
 
 	// holds input field component to get information on focus
 	// and set the visible text
-	private GameObject inputFieldGO;
 	private InputField InputFieldCO;
 
 	// holds whether the input field was in focus the previous frame
@@ -40,7 +39,7 @@ public class SubtractionProblem : MonoBehaviour {
 	// used to update game information
 	public GameObject gameStatsGO;
 	private GlobalControl gameStats;
-	private MiniGame subtractionGame;
+	private MiniGame additionGame;
 
 	// used to allow coin animation on correct answers
 	public GameObject coinGO;
@@ -56,13 +55,14 @@ public class SubtractionProblem : MonoBehaviour {
 	/// </summary>
 	void Start ()
 	{
+		
 		// get access to script on Chest and Coin object to play it's animation
 		coinScript = coinGO.GetComponent<PlayAnimation> ();
 		chestScript = chestGO.GetComponent<PlayAnimation> ();
 
 		// get access to saved addition game info to update
 		gameStats = gameStatsGO.GetComponent<GlobalControl> ();
-		subtractionGame = gameStats.savedGameData.subtraction;
+		additionGame = gameStats.savedGameData.addition;
 
 		// add a listener for when user clicks enter button
 		enterButton
@@ -75,15 +75,16 @@ public class SubtractionProblem : MonoBehaviour {
 			.AddListener (ExitGame);
 
 		// get the input field as a game object and an input field object
-		inputFieldGO = GameObject.Find (Constants.INPUT);
+		GameObject inputFieldGO = GameObject.Find (Constants.INPUT);
 		InputFieldCO = inputFieldGO.GetComponent<InputField> ();
 
 		isFocused = false;
 
-		score.text = subtractionGame.correctAnswers.ToString();
+
+		score.text = additionGame.correctAnswers.ToString();
 
 		// get the first math equation and set the text
-		equation = new MathEquation (subtractionGame.increaseRange, subtractionGame.level, MathEquation.EquationType.Subtraction);
+		equation = new MathEquation (additionGame.increaseRange, additionGame.level, MathEquation.EquationType.Addition);
 		mathProblem.text = equation.EquationString;
 	}
 
@@ -92,7 +93,7 @@ public class SubtractionProblem : MonoBehaviour {
 	/// </summary>
 	void Update () 
 	{
-		
+
 		// if the user presses enter, take that as if they clicked the enter button
 		// check if the answer is correct
 		if (Input.GetKeyDown (KeyCode.Return) && isFocused)
@@ -132,47 +133,46 @@ public class SubtractionProblem : MonoBehaviour {
 		int input;
 		int.TryParse(InputFieldCO.text, out input);
 
-		if (input == equation.Difference) 
-		{ // user answered correctly
+		if (input == equation.Sum) 
+		{ 
+			// user answered correctly
 
 			// play animation of treasure chest opening & coin going into scor
-			chestScript.Animate(Constants.Subtraction.CHEST_OPEN_ANIMATION);
+			chestScript.Animate(Constants.Addition.CHEST_OPEN_ANIMATION);
 
 			// play animation of coin going into score - wait until animation finishes
-			StartCoroutine(coinScript.AnimateAndWait (Constants.Subtraction.COIN_EARNED_ANIMATION));
-
-
+			StartCoroutine(coinScript.AnimateAndWait (Constants.Addition.COIN_EARNED_ANIMATION));
 
 			// generate a new math problem & update display
-			subtractionGame.correctAnswers++;
+			additionGame.correctAnswers++;
 			equation.GenerateNewEquation ();
 			mathProblem.text = equation.EquationString;
 			InputFieldCO.text = string.Empty;
 			InputFieldCO.ActivateInputField();
 
-			Debug.Log ("Answer: " + equation.Difference);
-
 			// if player answers 10 questions right, they move to the next level
-			if (subtractionGame.correctAnswers % 10 == 0)
+			if (additionGame.correctAnswers % 10 == 0)
 			{
+				
 				equation.IncreaseLevel ();
-				subtractionGame.level = equation.Level;
+				additionGame.level = equation.Level;
 			}
 
 			// update score on the screen
-			score.text = subtractionGame.correctAnswers.ToString();
+			score.text = additionGame.correctAnswers.ToString();
 		} 
 		else 
-		{ // user answered incorrectly
+		{ 
+			// user answered incorrectly
 			InputFieldCO.ActivateInputField();
-			chestScript.Animate (Constants.Subtraction.CHEST_LOCKED_ANIMATION);
+			chestScript.Animate (Constants.Addition.CHEST_LOCKED_ANIMATION);
 		}
 	}
 
 	/// <summary>
 	/// Save game data and return to the welcome screen of the main menu
 	/// </summary>
-	private void ExitGame() 
+	void ExitGame() 
 	{
 		gameStats.SavePlayer ();
 		SceneManager.LoadScene(Constants.SceneNames.MAIN_AREA);

@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using AssemblyCSharp;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TimedChallenge : MonoBehaviour 
 {
@@ -28,20 +28,25 @@ public class TimedChallenge : MonoBehaviour
 	public Text userInput;
 
 	// displays the current score
-	public Text score;
-	public Text gameHighScore;
+	private Text currentScore;
+	private Text gameHighScore;
 
+	// displays time left & holds num version of time left
 	public Text timerText;
 	private float timer;
 
+	// different screens available for challenge portion of game
 	private GameObject gameScreen;
 	private GameObject startScreen;
 	private GameObject chooseLevelScreen;
 	private GameObject endGameScreen;
 
+	// controls equations generated and level of difficulty
 	private MathEquation equation;
 	private MathEquation.EquationType equationType;
 	private int level;
+
+	// number of correct answers for a given timed challenge
 	private int correctAnswers;
 
 	private InputField inputFieldCO;
@@ -51,7 +56,10 @@ public class TimedChallenge : MonoBehaviour
 	public GameObject gameStatsGO;
 	private GlobalControl gameStats;
 	private int highScore;
-	Text highScoreText;
+
+	Text finalScore;
+	private Text gameOverHighScore;
+	private GameObject newHighScoreMessage;
 
 	/// <summary>
 	/// Used for initialization
@@ -59,60 +67,73 @@ public class TimedChallenge : MonoBehaviour
 	void Start () 
 	{
 		
+		// used to set if the player wants to do addition or subtraction
 		additionGame
 			.onClick
-			.AddListener (SetAddition);
+			.AddListener (delegate{SetEquationType(MathEquation.EquationType.Addition);});
 
 		subtractionGame
 			.onClick
-			.AddListener (SetSubtraction);
+			.AddListener (delegate{SetEquationType(MathEquation.EquationType.Subtraction);});
 
+		// used to set the level of difficulty of the problems given
 		level1
 			.onClick
-			.AddListener (SetLevel1);
+			.AddListener (delegate{SetLevel(1);});
 
 		level2
 			.onClick
-			.AddListener (SetLevel2);
+			.AddListener (delegate{SetLevel(2);});
 
 		level3
 			.onClick
-			.AddListener (SetLevel3);
+			.AddListener (delegate{SetLevel(3);});
 
+		// user can click to enter the answer for an equation
 		submitAnswer
 			.onClick
 			.AddListener (CheckAnswer);
 
+		// brings user to the main menu to choose to continue a game 
+		// or start a new one
 		exitButton
 			.onClick
 			.AddListener (ExitToMainMenu);
 
+		// brings the user to the main area where they can pick mini games
 		storyModeButton
 			.onClick
 			.AddListener (SwitchToStoryMode);
 
+		// brings user through menus to pick equation type and difficulty
 		replayButton
 			.onClick
 			.AddListener (PlayAgain);
 		
+
+		// get the text/GO elements for game over screen
+		gameOverHighScore = GameObject.Find (Constants.TimedChallenge.GameOverGO.HIGH_SCORE).GetComponent<Text>();
+		newHighScoreMessage = GameObject.Find (Constants.TimedChallenge.GameOverGO.NEW_HIGH_SCORE_MSG_GO);
+		finalScore = GameObject.Find (Constants.TimedChallenge.GameOverGO.FINAL_SCORE).GetComponent<Text> ();
+
+		// get the text/GO elements for the current game screen
+		currentScore = GameObject.Find (Constants.TimedChallenge.CurrentGameGO.CURRENT_SCORE).GetComponent<Text> ();
+		currentScore.text = correctAnswers.ToString();
+		gameHighScore = GameObject.Find (Constants.TimedChallenge.CurrentGameGO.HIGH_SCORE).GetComponent<Text> ();
+		inputFieldCO = GameObject.Find (Constants.INPUT).GetComponent<InputField> ();
+
+		// get references to the different views used in this scene
+		gameScreen = GameObject.Find (Constants.TimedChallenge.Views.GAME_SCREEN);
+		startScreen = GameObject.Find (Constants.TimedChallenge.Views.START_SCREEN);
+		chooseLevelScreen = GameObject.Find (Constants.TimedChallenge.Views.LEVEL_SCREEN);
+		endGameScreen = GameObject.Find (Constants.TimedChallenge.Views.END_GAME_SCREEN);
+
+
 		// set default values for these variables
 		level = 1;
 		correctAnswers = 0;
 		equationType = MathEquation.EquationType.Addition;
 		isFocused = false;
-
-		// get the input field as an input field object
-		inputFieldCO = GameObject.Find (Constants.INPUT).GetComponent<InputField> ();
-
-		// get the text element to display high score
-		highScoreText = GameObject.Find ("HighScoreText").GetComponent<Text>();
-
-		// get references to the different screens used in this scene
-		gameScreen = GameObject.Find ("Game");
-		startScreen = GameObject.Find ("OpeningScreen");
-		chooseLevelScreen = GameObject.Find ("ChooseLevelScreen");
-		endGameScreen = GameObject.Find ("GameOverScreen");
-
 
 		// turn off screens other than opening screen
 		gameScreen.SetActive (false);
@@ -123,8 +144,6 @@ public class TimedChallenge : MonoBehaviour
 		gameStats = gameStatsGO.GetComponent<GlobalControl> ();
 		highScore = gameStats.savedGameData.additionChallenge.l1HighScore;
 
-		// update score on the screen
-		score.text = correctAnswers.ToString();
 
 
 
@@ -132,13 +151,17 @@ public class TimedChallenge : MonoBehaviour
 
 	}
 
+	/// <summary>
+	/// Updates the timer in half second intervals. When the timer hits
+	/// zero it stops itself from being called anymore and displays results
+	/// </summary>
 	void UpdateTimer() {
 		if (timerText != null)
 		{
 			if (timer > 0.0f)
 			{
-				// getting called every .5sec, so reduce timer by .5
-				timer -= .5f;
+				// reduce timer at the same rate this function gets called
+				timer -= Constants.TimedChallenge.CurrentGameGO.TIMER_REFRESH_RATE;
 
 				// update minutes and seconds in string format
 				string minutes = Mathf.Floor (timer / 60).ToString ("00");
@@ -205,16 +228,20 @@ public class TimedChallenge : MonoBehaviour
 		equation = new MathEquation (10, level, equationType);
 		mathProblem.text = equation.EquationString;
 
+		// find high score for current game and display it to the user
 		GetHighScore ();
-
 		gameHighScore.text = highScore.ToString ();
 
-		timer = 10;
+		// sets the timer and has the UpdateTimer function called every half second
+		timer = Constants.TimedChallenge.CurrentGameGO.TIMER_VALUE;
 		timerText.text = "Time: 1:00";
-		InvokeRepeating ("UpdateTimer", 0.0f, 0.5f);
+		InvokeRepeating ("UpdateTimer", 0.0f, Constants.TimedChallenge.CurrentGameGO.TIMER_REFRESH_RATE);
 
 	}
 
+	/// <summary>
+	/// When the timer runs out the player gets to see the results
+	/// </summary>
 	private void EndGame() 
 	{
 
@@ -224,15 +251,10 @@ public class TimedChallenge : MonoBehaviour
 		chooseLevelScreen.SetActive (false);
 		endGameScreen.SetActive (true);
 
-		// turn off text saying you got the new high score
-		GameObject newHighScoreText = GameObject.Find ("NewHighScoreText");
-
 		// check if user beat their high score
 		if (correctAnswers > highScore)
 		{
-			Debug.Log ("set high score");
-
-			newHighScoreText.SetActive (true);
+			newHighScoreMessage.SetActive (true);
 			// store new high score (both in game and for save file)
 			highScore = correctAnswers;
 			SetStoredHighScore ();
@@ -241,15 +263,15 @@ public class TimedChallenge : MonoBehaviour
 		}
 		else
 		{
-			newHighScoreText.SetActive (false);
+			// turn off the message that says player got a high score
+			newHighScoreMessage.SetActive (false);
 		}
 
 		// display the score earned
-		Text finalScore = GameObject.Find ("ScoreText").GetComponent<Text> ();
 		finalScore.text = "Score: " + correctAnswers.ToString ();
 
 		// display the high score
-		highScoreText.text = "High Score: " + highScore.ToString ();
+		gameOverHighScore.text = "High Score: " + highScore.ToString ();
 	}
 
 	/// <summary>
@@ -275,7 +297,7 @@ public class TimedChallenge : MonoBehaviour
 			inputFieldCO.ActivateInputField();
 
 			// update score on the screen
-			score.text = correctAnswers.ToString();
+			currentScore.text = correctAnswers.ToString();
 
 		}
 		else 
@@ -285,16 +307,27 @@ public class TimedChallenge : MonoBehaviour
 		}
 	}
 		
+	/// <summary>
+	/// Leaves the current game and goes to main menu where you can start a 
+	/// new game or continue a game
+	/// </summary>
 	private void ExitToMainMenu()
 	{
 		SceneManager.LoadScene(Constants.SceneNames.MAIN_MENU);
 	}
 
+	/// <summary>
+	/// Leave challenge area and go back to mini games
+	/// </summary>
 	private void SwitchToStoryMode() 
 	{
 		SceneManager.LoadScene(Constants.SceneNames.MAIN_AREA);
 	}
 
+	/// <summary>
+	/// resets current score and reprompts user for equation type and
+	/// level of difficulty before starting a new round
+	/// </summary>
 	private void PlayAgain()
 	{
 		// turn off screens other than opening screen
@@ -305,7 +338,7 @@ public class TimedChallenge : MonoBehaviour
 
 		// reset current score
 		correctAnswers = 0;
-		score.text = correctAnswers.ToString ();
+		currentScore.text = correctAnswers.ToString ();
 
 		// set the high score in the game screen
 		gameHighScore.text = highScore.ToString ();
@@ -315,14 +348,14 @@ public class TimedChallenge : MonoBehaviour
 		inputFieldCO.ActivateInputField();
 	}
 
-
 	/// <summary>
-	/// Sets the equation type to addition and sets up
-	/// screen to choose level of difficulty.
+	/// Sets the type of the equation and sets scene to have user pick difficulty
+	/// level - used with equation type buttons.
 	/// </summary>
-	private void SetAddition()
+	/// <param name="eqType">The equation type the user wants to solve - addition, subtraction.</param>
+	private void SetEquationType(MathEquation.EquationType eqType)
 	{
-		equationType = MathEquation.EquationType.Addition;
+		equationType = eqType;
 
 		// show screen to pick difficulty level
 		startScreen.SetActive (false);
@@ -332,47 +365,19 @@ public class TimedChallenge : MonoBehaviour
 	}
 
 	/// <summary>
-	/// Sets the equation type to subtraction and sets up
-	/// screen to choose level of difficulty.
+	/// Sets the level of difficulty and starts the game - used with level buttons.
 	/// </summary>
-	private void SetSubtraction() 
+	/// <param name="level">The level of difficulty the user wants to play at.</param>
+	void SetLevel(int level)
 	{
-		equationType = MathEquation.EquationType.Subtraction;
-
-		// show screen to pick difficulty level
-		startScreen.SetActive (false);
-		gameScreen.SetActive (false);
-		endGameScreen.SetActive (false);
-		chooseLevelScreen.SetActive (true);
-	}
-
-	/// <summary>
-	/// Sets the level to 1 and starts game.
-	/// </summary>
-	private void SetLevel1() 
-	{
-		level = 1;
+		this.level = level;
 		StartGame ();
 	}
 
 	/// <summary>
-	/// Sets the level to 2 and starts game.
+	/// If a new high score is set, store it in gameStats so it can be saved
+	/// in the player's save file
 	/// </summary>
-	private void SetLevel2()
-	{
-		level = 2;
-		StartGame ();
-	}
-
-	/// <summary>
-	/// Sets the level to 3 and starts game.
-	/// </summary>
-	private void SetLevel3() 
-	{
-		level = 3;
-		StartGame ();
-	}
-
 	private void SetStoredHighScore()
 	{
 		// set the high score for the current game
@@ -408,6 +413,9 @@ public class TimedChallenge : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Find out what the high score is for the current game and level
+	/// </summary>
 	private void GetHighScore() 
 	{
 		// set the high score for the current game

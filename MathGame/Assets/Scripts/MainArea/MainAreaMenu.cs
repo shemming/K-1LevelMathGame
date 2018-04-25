@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using AssemblyCSharp;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainAreaMenu : MonoBehaviour {
 
@@ -29,7 +29,6 @@ public class MainAreaMenu : MonoBehaviour {
 	
 	private void SaveQuit() 
 	{
-		Debug.Log ("SaveQuit");
 		gameManager.SavePlayer();
 		GlobalControl.Save ();
 		SceneManager.LoadScene (Constants.SceneNames.MAIN_MENU);
@@ -37,7 +36,6 @@ public class MainAreaMenu : MonoBehaviour {
 
 	private void Challenge() 
 	{
-		Debug.Log ("challenge");
 		gameManager.SavePlayer ();
 		GlobalControl.Save ();
 		SceneManager.LoadScene (Constants.SceneNames.CHALLENGE);
@@ -45,7 +43,6 @@ public class MainAreaMenu : MonoBehaviour {
 
 	private void Save() 
 	{
-		Debug.Log ("save");
 		GlobalControl.Save ();
 		gameManager.SavePlayer ();
 	}

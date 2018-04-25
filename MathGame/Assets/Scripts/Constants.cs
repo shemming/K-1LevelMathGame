@@ -136,6 +136,44 @@ namespace AssemblyCSharp
 			public const string HORIZ_AXIS = "Horizontal";
 			public const string VERT_AXIS = "Vertical";
 		}
+
+		/// <summary>
+		/// Constants used exclusively in TimedChallenge file
+		/// </summary>
+		public class TimedChallenge
+		{
+			/// <summary>
+			/// Game objects associated with the game over screen
+			/// </summary>
+			public class GameOverGO
+			{
+				public const string FINAL_SCORE = "ScoreText";
+				public const string HIGH_SCORE = "HighScoreText";
+				public const string NEW_HIGH_SCORE_MSG_GO = "NewHighScoreText";
+			}
+
+			/// <summary>
+			/// Game objects associated with the current game screen
+			/// </summary>
+			public class CurrentGameGO
+			{
+				public const string HIGH_SCORE = "HighScore";
+				public const string CURRENT_SCORE = "Score";
+				public const float TIMER_VALUE = 60f;
+				public const float TIMER_REFRESH_RATE = 0.5f;
+			}
+
+			/// <summary>
+			/// game objects that hold the different possible views for the timed challenge
+			/// </summary>
+			public class Views
+			{
+				public const string GAME_SCREEN = "Game";
+				public const string START_SCREEN = "OpeningScreen";
+				public const string LEVEL_SCREEN = "ChooseLevelScreen";
+				public const string END_GAME_SCREEN = "GameOverScreen";
+			}
+		}
 	}
 }
 
