@@ -16,6 +16,8 @@ public class MainAreaDesign : MonoBehaviour
 	public GameObject instructions;
 	public GameObject blackOutSheet;
 
+	public GameObject yellowStar;
+
 	/// <summary>
 	/// Called when the object becomes enabled and active,
 	/// aka every time the scene is loaded
@@ -26,12 +28,11 @@ public class MainAreaDesign : MonoBehaviour
 		gameStats = gameStatsGO.GetComponent<GlobalControl> ();
 		gameStats.LoadPlayer ();
 
-		// only show incentives the player has earned
-		SetIncentives ();
+		SetExtras ();
 
-		// if player has already made progress in the game or seen the instructions, 
+		// if player has already made progress in the game, seen the instructions, or completed a game
 		// don't show the instructions automatically
-		if (!gameStats.isGameStarted () && !gameStats.savedGameData.instructionsShown)
+		if (!gameStats.isGameStarted () && !gameStats.savedGameData.instructionsShown && gameStats.savedGameData.gamesCompleted == 0)
 		{
 			instructions.SetActive (true);
 			blackOutSheet.SetActive (true);
@@ -44,9 +45,21 @@ public class MainAreaDesign : MonoBehaviour
 	}
 
 	/// <summary>
+	/// Turns on any incentives or starts earned for the current player.
+	/// </summary>
+	public void SetExtras() 
+	{
+		// only show incentives the player has earned
+		SetIncentives ();
+
+		// show a star for every time the player reset the game
+		SetStars ();
+	}
+
+	/// <summary>
 	/// Disables player movement through use of arrow keys
 	/// </summary>
-	void FreezePlayer() 
+	public void FreezePlayer() 
 	{
 		GameObject varGameObject = GameObject.FindWithTag(Constants.PLAYER);
 		varGameObject.GetComponent<PlayerController>().enabled = false;
@@ -228,6 +241,23 @@ public class MainAreaDesign : MonoBehaviour
 			{
 				animal.SetActive (false);
 			}
+		}
+	}
+
+	/// <summary>
+	/// Display a star for every time the user restarts the game.
+	/// Game can only restart if they beat all levels
+	/// </summary>
+	private void SetStars() 
+	{
+		Transform parent = GameObject.Find ("Canvas").transform;
+
+		for (int i = 0; i < gameStats.savedGameData.gamesCompleted; i++)
+		{
+			GameObject moduleGo = (GameObject)Instantiate (yellowStar);
+			moduleGo.transform.SetParent (parent, false);
+
+			moduleGo.transform.Translate(new Vector3 (i/2f + .5f, -0.5f));
 		}
 	}
 }

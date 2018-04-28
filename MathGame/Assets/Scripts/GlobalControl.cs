@@ -9,7 +9,7 @@ public class GlobalControl : MonoBehaviour {
 
 	public static GlobalControl Instance = null;
 	public Game savedGameData;
-	string filename;
+	private string filename;
 
 	/// <summary>
 	/// Ensure there is only one instance in existence at a time
@@ -67,6 +67,7 @@ public class GlobalControl : MonoBehaviour {
 		savedGameData.subtractionChallenge.l3HighScore = Instance.savedGameData.subtractionChallenge.l3HighScore;
 
 		savedGameData.instructionsShown = Instance.savedGameData.instructionsShown;
+		savedGameData.gamesCompleted = Instance.savedGameData.gamesCompleted;
 	}
 
 	/// <summary>
@@ -105,6 +106,7 @@ public class GlobalControl : MonoBehaviour {
 		Instance.savedGameData.subtractionChallenge.l3HighScore = savedGameData.subtractionChallenge.l3HighScore;
 
 		Instance.savedGameData.instructionsShown = savedGameData.instructionsShown;
+		Instance.savedGameData.gamesCompleted = savedGameData.gamesCompleted;
 
 	}
 
@@ -154,7 +156,8 @@ public class GlobalControl : MonoBehaviour {
 	/// Checks if user has any progess in current game
 	/// </summary>
 	/// <returns><c>true</c>, if game started was started, <c>false</c> otherwise.</returns>
-	public bool isGameStarted() {
+	public bool isGameStarted() 
+	{
 		// checks if all scores are at zero
 		if (savedGameData.addition.correctAnswers == 0 && savedGameData.counting.correctAnswers == 0
 			&& savedGameData.subtraction.correctAnswers == 0 && savedGameData.equality.correctAnswers == 0
@@ -165,5 +168,20 @@ public class GlobalControl : MonoBehaviour {
 			return false;
 		}
 		return true;
+	}
+
+	/// <summary>
+	/// Checks if the user beat all 3 levels for every mini game available
+	/// </summary>
+	/// <returns><c>true</c>, if game was completed, <c>false</c> otherwise.</returns>
+	public bool isGameComplete() 
+	{
+		// checks if all scores are at least 30
+		if (savedGameData.addition.correctAnswers >= 30 && savedGameData.counting.correctAnswers >= 30
+			&& savedGameData.subtraction.correctAnswers >= 30 && savedGameData.equality.correctAnswers >= 30)
+		{
+			return true;
+		}
+		return false;
 	}
 }

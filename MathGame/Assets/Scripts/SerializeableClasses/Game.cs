@@ -14,6 +14,9 @@ namespace AssemblyCSharp
 		// time the player logs on
 		public bool instructionsShown;
 
+		// keeps track of how many times user starts over
+		public int gamesCompleted;
+
 		// Keeps track of progress in all mini games
 		public MiniGame addition;
 		public MiniGame subtraction;
@@ -27,6 +30,7 @@ namespace AssemblyCSharp
 		public Game ()
 		{
 			this.instructionsShown = false;
+			this.gamesCompleted = 0;
 
 			this.addition = new MiniGame ();
 			this.subtraction = new MiniGame ();
