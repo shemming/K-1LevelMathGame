@@ -14,6 +14,9 @@ TagManager:
   - Subtraction1
   - Subtraction2
   - Subtraction3
+  - Equality1
+  - Equality2
+  - Equality3
   layers:
   - Default
   - TransparentFX

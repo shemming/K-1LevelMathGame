@@ -10,6 +10,7 @@ public class TimedChallenge : MonoBehaviour
 
 	public Button additionGame;
 	public Button subtractionGame;
+	public Button backButton;
 
 	public Button level1;
 	public Button level2;
@@ -61,6 +62,7 @@ public class TimedChallenge : MonoBehaviour
 	private Text gameOverHighScore;
 	private GameObject newHighScoreMessage;
 
+
 	/// <summary>
 	/// Used for initialization
 	/// </summary>
@@ -75,6 +77,10 @@ public class TimedChallenge : MonoBehaviour
 		subtractionGame
 			.onClick
 			.AddListener (delegate{SetEquationType(MathEquation.EquationType.Subtraction);});
+
+		backButton
+			.onClick
+			.AddListener (SwitchToStoryMode);
 
 		// used to set the level of difficulty of the problems given
 		level1

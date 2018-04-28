@@ -51,13 +51,22 @@ public class GlobalControl : MonoBehaviour {
 		savedGameData.counting.increaseRange = Instance.savedGameData.counting.increaseRange;
 		savedGameData.counting.level = Instance.savedGameData.counting.level;
 
+		// save all equality game data
+		savedGameData.equality.correctAnswers = Instance.savedGameData.equality.correctAnswers;
+		savedGameData.equality.increaseRange = Instance.savedGameData.equality.increaseRange;
+		savedGameData.equality.level = Instance.savedGameData.equality.level;
+
+		// save all timed addition challenge game data
 		savedGameData.additionChallenge.l1HighScore = Instance.savedGameData.additionChallenge.l1HighScore;
 		savedGameData.additionChallenge.l2HighScore = Instance.savedGameData.additionChallenge.l2HighScore;
 		savedGameData.additionChallenge.l3HighScore = Instance.savedGameData.additionChallenge.l3HighScore;
 
+		// save all timed subtraction challenge game data
 		savedGameData.subtractionChallenge.l1HighScore = Instance.savedGameData.subtractionChallenge.l1HighScore;
 		savedGameData.subtractionChallenge.l2HighScore = Instance.savedGameData.subtractionChallenge.l2HighScore;
 		savedGameData.subtractionChallenge.l3HighScore = Instance.savedGameData.subtractionChallenge.l3HighScore;
+
+		savedGameData.instructionsShown = Instance.savedGameData.instructionsShown;
 	}
 
 	/// <summary>
@@ -80,6 +89,11 @@ public class GlobalControl : MonoBehaviour {
 		Instance.savedGameData.counting.increaseRange = savedGameData.counting.increaseRange;
 		Instance.savedGameData.counting.level = savedGameData.counting.level;
 
+		// save all equality game data
+		Instance.savedGameData.equality.correctAnswers = savedGameData.equality.correctAnswers;
+		Instance.savedGameData.equality.increaseRange = savedGameData.equality.increaseRange;
+		Instance.savedGameData.equality.level = savedGameData.equality.level;
+
 		// save all timed addition challenge game data
 		Instance.savedGameData.additionChallenge.l1HighScore = savedGameData.additionChallenge.l1HighScore;
 		Instance.savedGameData.additionChallenge.l2HighScore = savedGameData.additionChallenge.l2HighScore;
@@ -89,6 +103,8 @@ public class GlobalControl : MonoBehaviour {
 		Instance.savedGameData.subtractionChallenge.l1HighScore = savedGameData.subtractionChallenge.l1HighScore;
 		Instance.savedGameData.subtractionChallenge.l2HighScore = savedGameData.subtractionChallenge.l2HighScore;
 		Instance.savedGameData.subtractionChallenge.l3HighScore = savedGameData.subtractionChallenge.l3HighScore;
+
+		Instance.savedGameData.instructionsShown = savedGameData.instructionsShown;
 
 	}
 
@@ -132,5 +148,22 @@ public class GlobalControl : MonoBehaviour {
 			string json = File.ReadAllText (path);
 			Instance.savedGameData = JsonUtility.FromJson<Game> (json);
 		}
+	}
+
+	/// <summary>
+	/// Checks if user has any progess in current game
+	/// </summary>
+	/// <returns><c>true</c>, if game started was started, <c>false</c> otherwise.</returns>
+	public bool isGameStarted() {
+		// checks if all scores are at zero
+		if (savedGameData.addition.correctAnswers == 0 && savedGameData.counting.correctAnswers == 0
+			&& savedGameData.subtraction.correctAnswers == 0 && savedGameData.equality.correctAnswers == 0
+			&& savedGameData.additionChallenge.l1HighScore == 0 && savedGameData.additionChallenge.l2HighScore == 0 
+			&& savedGameData.additionChallenge.l3HighScore == 0 && savedGameData.subtractionChallenge.l1HighScore == 0 
+			&& savedGameData.subtractionChallenge.l2HighScore == 0 && savedGameData.subtractionChallenge.l3HighScore == 0)
+		{
+			return false;
+		}
+		return true;
 	}
 }

@@ -30,8 +30,8 @@ public class SubtractionProblem : MonoBehaviour {
 
 	// holds input field component to get information on focus
 	// and set the visible text
-	private GameObject inputFieldGO;
-	private InputField InputFieldCO;
+	private GameObject inputFieldTextGO;
+	private InputField inputFieldTextCO;
 
 	// holds whether the input field was in focus the previous frame
 	// allows user to press enter to submit their answer
@@ -75,8 +75,8 @@ public class SubtractionProblem : MonoBehaviour {
 			.AddListener (ExitGame);
 
 		// get the input field as a game object and an input field object
-		inputFieldGO = GameObject.Find (Constants.INPUT);
-		InputFieldCO = inputFieldGO.GetComponent<InputField> ();
+		inputFieldTextGO = GameObject.Find (Constants.INPUT);
+		inputFieldTextCO = inputFieldTextGO.GetComponent<InputField> ();
 
 		isFocused = false;
 
@@ -85,6 +85,10 @@ public class SubtractionProblem : MonoBehaviour {
 		// get the first math equation and set the text
 		equation = new MathEquation (subtractionGame.increaseRange, subtractionGame.level, MathEquation.EquationType.Subtraction);
 		mathProblem.text = equation.EquationString;
+
+		InputField inputField = GameObject.Find ("InputField").GetComponent<InputField> (); 
+		inputField.characterValidation = InputField.CharacterValidation.Integer;
+		inputField.characterLimit = 5;
 	}
 
 	/// <summary>
@@ -103,13 +107,13 @@ public class SubtractionProblem : MonoBehaviour {
 		{
 			// update the number being displayed in the input box to reflect
 			// what the user has entered into it
-			userInput.text = InputFieldCO.text;
+			userInput.text = inputFieldTextCO.text;
 		}
 
 		// keep tabs of if input box is in focus or not
 		// needed to register if input box is in focus and user clicks enter
 		// because when the user hits enter it immediately goes out of focus
-		if (InputFieldCO.isFocused)
+		if (inputFieldTextCO.isFocused)
 		{
 			isFocused = true;
 		}
@@ -130,7 +134,7 @@ public class SubtractionProblem : MonoBehaviour {
 		// don't really need to validate it's a number because the input
 		// field only allows integers
 		int input;
-		int.TryParse(InputFieldCO.text, out input);
+		int.TryParse(inputFieldTextCO.text, out input);
 
 		if (input == equation.Difference) 
 		{ // user answered correctly
@@ -147,8 +151,8 @@ public class SubtractionProblem : MonoBehaviour {
 			subtractionGame.correctAnswers++;
 			equation.GenerateNewEquation ();
 			mathProblem.text = equation.EquationString;
-			InputFieldCO.text = string.Empty;
-			InputFieldCO.ActivateInputField();
+			inputFieldTextCO.text = string.Empty;
+			inputFieldTextCO.ActivateInputField();
 
 			Debug.Log ("Answer: " + equation.Difference);
 
@@ -164,7 +168,7 @@ public class SubtractionProblem : MonoBehaviour {
 		} 
 		else 
 		{ // user answered incorrectly
-			InputFieldCO.ActivateInputField();
+			inputFieldTextCO.ActivateInputField();
 			chestScript.Animate (Constants.Subtraction.CHEST_LOCKED_ANIMATION);
 		}
 	}

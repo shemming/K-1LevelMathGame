@@ -8,6 +8,7 @@ namespace AssemblyCSharp
 		/// Name of user input game object.
 		/// </summary>
 		public const string INPUT = "userInput";
+		public const string PLAYER = "Player";
 
 		/// <summary>
 		/// Names of the scenes used in the game.
@@ -60,6 +61,17 @@ namespace AssemblyCSharp
 				public const string INCENTIVES_1 = "Counting1";
 				public const string INCENTIVES_2 = "Counting2";
 				public const string INCENTIVES_3 = "Counting3";
+			}
+
+			/// <summary>
+			/// Constants used in reference to the equality mini game
+			/// </summary>
+			public class Equality 
+			{
+				public const string SIGN_TEXT = "EqualityTextMesh";
+				public const string INCENTIVES_1 = "Equality1";
+				public const string INCENTIVES_2 = "Equality2";
+				public const string INCENTIVES_3 = "Equality3";
 			}
 
 		}

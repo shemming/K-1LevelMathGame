@@ -125,6 +125,7 @@ public class MainMenu : MonoBehaviour
 		List<string> filenames = Directory.GetFiles(Application.persistentDataPath)
 			.Select(file => Path.GetFileName(file))
 			.Where(file => file.Contains(Constants.MainMenu.FILE_EXTENSION))
+			.SkipWhile(file => file == "")
 			.ToList();
 
 		// remove extension for display
