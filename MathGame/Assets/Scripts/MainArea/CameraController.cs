@@ -49,9 +49,18 @@ public class CameraController : MonoBehaviour {
 	/// </summary>
 	private float maxY;
 
+	/// <name>
+	/// Start
+	/// </name>
 	/// <summary>
 	/// Use this for initialization
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void Start () 
 	{
 		var vertExtent = myCamera.orthographicSize;
@@ -67,10 +76,19 @@ public class CameraController : MonoBehaviour {
 		offset = transform.position - player.transform.position;
 	}
 
+	/// <name>
+	/// LateUpdate
+	/// </name>
 	/// <summary>
 	/// LateUpdate is called after Update each frame.
 	/// Ensures character movement already happened that frame for the camera to follow
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void LateUpdate () 
 	{
 		

@@ -49,3 +49,4 @@
 /Users/Sabrina/Documents/GitHub/K-1LevelMathGame/MathGame/Temp/bin/Debug/Assembly-CSharp.dll
 /Users/Sabrina/Documents/GitHub/K-1LevelMathGame/MathGame/obj/Debug/Assembly-CSharp.dll
 /Users/Sabrina/Documents/GitHub/K-1LevelMathGame/MathGame/obj/Debug/Assembly-CSharp.dll.mdb
+/Users/Sabrina/Documents/GitHub/K-1LevelMathGame/MathGame/Temp/bin/Debug/Facebook.Unity.Settings.dll

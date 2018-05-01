@@ -62,10 +62,18 @@ public class TimedChallenge : MonoBehaviour
 	private Text gameOverHighScore;
 	private GameObject newHighScoreMessage;
 
-
+	/// <name>
+	/// Start
+	/// </name>
 	/// <summary>
 	/// Used for initialization
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void Start () 
 	{
 		
@@ -157,10 +165,19 @@ public class TimedChallenge : MonoBehaviour
 
 	}
 
+	///	<name>
+	/// UpdateTimer
+	/// </name>
 	/// <summary>
 	/// Updates the timer in half second intervals. When the timer hits
 	/// zero it stops itself from being called anymore and displays results
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void UpdateTimer() {
 		if (timerText != null)
 		{
@@ -188,9 +205,18 @@ public class TimedChallenge : MonoBehaviour
 		}
 	}
 
+	/// <name>
+	/// Update
+	/// </name>
 	/// <summary>
 	/// Update is called once per frame, checks user input
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void Update() 
 	{
 		// if the user presses enter, take that as if they clicked the enter button
@@ -219,10 +245,18 @@ public class TimedChallenge : MonoBehaviour
 		}
 	}
 
-
+	/// <name>
+	/// StartGame
+	/// </name>
 	/// <summary>
 	/// Sets up screen to start timed game and initializes equation
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	private void StartGame() 
 	{
 		// show screen to start game
@@ -245,9 +279,18 @@ public class TimedChallenge : MonoBehaviour
 
 	}
 
+	/// <name>
+	/// EndGame
+	/// </name>
 	/// <summary>
 	/// When the timer runs out the player gets to see the results
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	private void EndGame() 
 	{
 
@@ -280,10 +323,19 @@ public class TimedChallenge : MonoBehaviour
 		gameOverHighScore.text = "High Score: " + highScore.ToString ();
 	}
 
+	/// <name>
+	/// CheckAnswer
+	/// </name>
 	/// <summary>
 	/// Checks the answer to the math problem given by the user.
 	/// If correct, a new math problem is generated.
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	private void CheckAnswer() 
 	{
 		// get the number entered by the user.
@@ -312,16 +364,28 @@ public class TimedChallenge : MonoBehaviour
 			inputFieldCO.ActivateInputField();
 		}
 	}
-		
+
+	/// <name>
+	/// ExitToMainMenu
+	/// </name>
 	/// <summary>
 	/// Leaves the current game and goes to main menu where you can start a 
 	/// new game or continue a game
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	private void ExitToMainMenu()
 	{
 		SceneManager.LoadScene(Constants.SceneNames.MAIN_MENU);
 	}
 
+	/// <name>
+	/// SwitchToStoryMode
+	/// </name>
 	/// <summary>
 	/// Leave challenge area and go back to mini games
 	/// </summary>
@@ -330,10 +394,19 @@ public class TimedChallenge : MonoBehaviour
 		SceneManager.LoadScene(Constants.SceneNames.MAIN_AREA);
 	}
 
+	/// <name>
+	/// PlayAgain
+	/// </name>
 	/// <summary>
 	/// resets current score and reprompts user for equation type and
 	/// level of difficulty before starting a new round
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	private void PlayAgain()
 	{
 		// turn off screens other than opening screen
@@ -354,11 +427,20 @@ public class TimedChallenge : MonoBehaviour
 		inputFieldCO.ActivateInputField();
 	}
 
+	/// <name>
+	/// SetEquationType
+	/// </name>
 	/// <summary>
 	/// Sets the type of the equation and sets scene to have user pick difficulty
 	/// level - used with equation type buttons.
 	/// </summary>
 	/// <param name="eqType">The equation type the user wants to solve - addition, subtraction.</param>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	private void SetEquationType(MathEquation.EquationType eqType)
 	{
 		equationType = eqType;
@@ -370,20 +452,38 @@ public class TimedChallenge : MonoBehaviour
 		chooseLevelScreen.SetActive (true);
 	}
 
+	/// <name>
+	/// SetLevel
+	/// </name>
 	/// <summary>
 	/// Sets the level of difficulty and starts the game - used with level buttons.
 	/// </summary>
 	/// <param name="level">The level of difficulty the user wants to play at.</param>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void SetLevel(int level)
 	{
 		this.level = level;
 		StartGame ();
 	}
 
+	/// <name>
+	/// SetStoredHighScore
+	/// </name>
 	/// <summary>
 	/// If a new high score is set, store it in gameStats so it can be saved
 	/// in the player's save file
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	private void SetStoredHighScore()
 	{
 		// set the high score for the current game
@@ -419,9 +519,18 @@ public class TimedChallenge : MonoBehaviour
 		}
 	}
 
+	/// <name>
+	/// GetHighScore
+	/// </name>
 	/// <summary>
 	/// Find out what the high score is for the current game and level
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	private void GetHighScore() 
 	{
 		// set the high score for the current game

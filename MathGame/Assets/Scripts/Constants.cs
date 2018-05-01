@@ -10,9 +10,18 @@ namespace AssemblyCSharp
 		public const string INPUT = "userInput";
 		public const string PLAYER = "Player";
 
+		/// <name>
+		/// SceneNames
+		/// </name>
 		/// <summary>
 		/// Names of the scenes used in the game.
 		/// </summary>
+		/// <author>
+		/// Sabrina Hemming
+		/// </author>
+		/// <date>
+		/// 
+		/// </date>
 		public class SceneNames
 		{
 			public const string MAIN_MENU = "MainMenu";
@@ -23,9 +32,18 @@ namespace AssemblyCSharp
 			public const string CHALLENGE = "Challenge";
 		}	
 
+		/// <name>
+		/// MainArea
+		/// </name>
 		/// <summary>
 		/// Constants used exclusively in the main area scene
 		/// </summary>
+		/// <author>
+		/// Sabrina Hemming
+		/// </author>
+		/// <date>
+		/// 
+		/// </date>
 		public class MainArea 
 		{
 			public const string SORTING_LAYER = "Decorations";

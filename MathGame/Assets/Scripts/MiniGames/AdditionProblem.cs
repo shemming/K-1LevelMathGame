@@ -50,9 +50,18 @@ public class AdditionProblem : MonoBehaviour {
 	private PlayAnimation chestScript;
 	#endregion
 
+	/// <name>
+	/// Start
+	/// </name>
 	/// <summary>
 	/// Use this for initialization
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void Start ()
 	{
 		
@@ -88,9 +97,18 @@ public class AdditionProblem : MonoBehaviour {
 		mathProblem.text = equation.EquationString;
 	}
 
+	/// <name>
+	/// Update
+	/// </name>
 	/// <summary>
 	/// Update is called once per frame, checks user input
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void Update () 
 	{
 
@@ -120,10 +138,19 @@ public class AdditionProblem : MonoBehaviour {
 		}
 	}
 
+	/// <name>
+	/// CheckAnswer
+	/// </name>
 	/// <summary>
 	/// Checks the answer to the math problem given by the user.
 	/// If correct, a new math problem is generated.
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void CheckAnswer() 
 	{
 
@@ -169,9 +196,18 @@ public class AdditionProblem : MonoBehaviour {
 		}
 	}
 
+	/// <name>
+	/// ExitGame
+	/// </name>
 	/// <summary>
 	/// Save game data and return to the welcome screen of the main menu
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void ExitGame() 
 	{
 		gameStats.SavePlayer ();

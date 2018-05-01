@@ -42,12 +42,21 @@ namespace AssemblyCSharp
 		/// </summary>
 		private const int MAX_LEVEL = 3;
 
+		/// <name>
+		/// MathEquation
+		/// </name>
 		/// <summary>
 		/// Initializes a new instance of the MathEquation class.
 		/// </summary>
 		/// <param name="level">Level of equation difficulty. Can be > 1 if user has saved data</param>
 		/// <param name="increaseRange">how much each level increases by</param>
 		/// <param name="type">type of equation</param> 
+		/// <author>
+		/// Sabrina Hemming
+		/// </author>
+		/// <date>
+		/// 
+		/// </date>
 		public MathEquation (int increaseRange, int level, EquationType type)
 		{
 			this.equationType = type;
@@ -59,6 +68,9 @@ namespace AssemblyCSharp
 			GenerateNewEquation ();
 		}
 
+		/// <name>
+		/// Num1
+		/// </name>
 		/// <summary>
 		/// returns num1
 		/// </summary>
@@ -67,6 +79,9 @@ namespace AssemblyCSharp
 			get { return num1; }
 		}
 
+		/// <name>
+		/// Num2
+		/// </name>
 		/// <summary>
 		/// returns num2
 		/// </summary>
@@ -75,6 +90,19 @@ namespace AssemblyCSharp
 			get { return num2; }
 		}
 
+		/// <name>
+		/// EquationString
+		/// </name>
+		/// <summary>
+		/// Creates the equation string for display purposes.
+		/// </summary>
+		/// <value>The equation string.</value>
+		/// <author>
+		/// Sabrina Hemming
+		/// </author>
+		/// <date>
+		/// 
+		/// </date>
 		public string EquationString 
 		{
 			get 
@@ -90,28 +118,55 @@ namespace AssemblyCSharp
 			}
 		}
 
+		/// <name>
+		/// Sum
+		/// </name>
 		/// <summary>
 		/// Gets the sum.
 		/// </summary>
 		/// <value>The sum.</value>
+		/// <author>
+		/// Sabrina Hemming
+		/// </author>
+		/// <date>
+		/// 
+		/// </date>
 		public int Sum 
 		{
 			get { return num1 + num2; }
 		}
 
+		/// <name>
+		/// Difference
+		/// </name>
 		/// <summary>
 		/// Gets the difference.
 		/// </summary>
 		/// <value>The difference.</value>
+		/// <author>
+		/// Sabrina Hemming
+		/// </author>
+		/// <date>
+		/// 
+		/// </date>
 		public int Difference 
 		{
 			get { return num1 - num2; }
 		}
 
+		/// <name>
+		/// Level
+		/// </name>
 		/// <summary>
 		/// Gets or sets the level. Won't let level be set lower than 1.
 		/// </summary>
 		/// <value>The level.</value>
+		/// <author>
+		/// Sabrina Hemming
+		/// </author>
+		/// <date>
+		/// 
+		/// </date>
 		public int Level 
 		{
 			get { return level; }
@@ -123,10 +178,19 @@ namespace AssemblyCSharp
 			}
 		}
 
+		/// <name>
+		/// IncreaseLevel
+		/// </name>
 		/// <summary>
 		/// Increases to the next level of difficulty.
 		/// Doesn't allow level to pass the max set level
 		/// </summary>
+		/// <author>
+		/// Sabrina Hemming
+		/// </author>
+		/// <date>
+		/// 
+		/// </date>
 		public void IncreaseLevel() 
 		{
 			if (level < MAX_LEVEL)
@@ -135,13 +199,21 @@ namespace AssemblyCSharp
 			}
 		}
 
-
+		/// <name>
+		/// GenerateNewEquation
+		/// </name>
 		/// <summary>
 		/// Gets new numbers for the math problem.
 		/// Makes sure exact equations aren't repeated.
 		/// num1 and num2 can exchange values and will still 
 		/// be considered a new equation.
 		/// </summary>
+		/// <author>
+		/// Sabrina Hemming
+		/// </author>
+		/// <date>
+		/// 
+		/// </date>
 		public void GenerateNewEquation()
 		{
 			// get new random numbers for the math problem

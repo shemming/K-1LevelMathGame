@@ -2,9 +2,18 @@
 
 namespace AssemblyCSharp
 {
+	/// <name>
+	/// Challenge
+	/// </name>
 	/// <summary>
 	/// Holds data for the challenges
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	[System.Serializable]
 	public class Challenge
 	{

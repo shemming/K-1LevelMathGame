@@ -15,24 +15,37 @@ public class MainAreaDesign : MonoBehaviour
 	// used to display instructions when player starts new game
 	public GameObject instructions;
 	public GameObject blackOutSheet;
+	public GameObject resetPrompt;
 
+	// holds a prefab of a yellow star to be generated along the top of the screen to 
+	// represent the number of times the player reset theit game data
 	public GameObject yellowStar;
 
+	/// <name>
+	/// OnEnable
+	/// </name>
 	/// <summary>
 	/// Called when the object becomes enabled and active,
 	/// aka every time the scene is loaded
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void OnEnable ()
 	{
 		// load player info into savedGameData to transfer into different mini games
 		gameStats = gameStatsGO.GetComponent<GlobalControl> ();
 		gameStats.LoadPlayer ();
 
+		// displays any incentives or stars earned by the player
 		SetExtras ();
 
 		// if player has already made progress in the game, seen the instructions, or completed a game
 		// don't show the instructions automatically
-		if (!gameStats.isGameStarted () && !gameStats.savedGameData.instructionsShown && gameStats.savedGameData.gamesCompleted == 0)
+		if (!gameStats.IsGameStarted () && !gameStats.savedGameData.instructionsShown && gameStats.savedGameData.gamesCompleted == 0)
 		{
 			instructions.SetActive (true);
 			blackOutSheet.SetActive (true);
@@ -41,12 +54,34 @@ public class MainAreaDesign : MonoBehaviour
 			FreezePlayer ();
 		}
 
+		// if player has completed all the mini games and hasn't been prompted to reset their progress, prompt them
+		// if they have ever been prompted, they are not ever prompted again.
+		if (gameStats.IsGameComplete () && !gameStats.savedGameData.resetPromptShown)
+		{
+			resetPrompt.SetActive (true);
+			resetPrompt.GetComponentInChildren<Text> ().text = "Would you like to reset your game? All of your game scores will be " +
+				"reset to zero and you will earn a star. Your timed challenge progress will not be erased.";
+			blackOutSheet.SetActive (true);
+			gameStats.savedGameData.resetPromptShown = true;
+			gameStats.SavePlayer ();
+			FreezePlayer ();
+		}
+
 
 	}
 
+	/// <name>
+	/// SetExtras
+	/// </name>
 	/// <summary>
 	/// Turns on any incentives or starts earned for the current player.
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	public void SetExtras() 
 	{
 		// only show incentives the player has earned
@@ -56,27 +91,54 @@ public class MainAreaDesign : MonoBehaviour
 		SetStars ();
 	}
 
+	/// <name>
+	/// FreezePlayer
+	/// </name>
 	/// <summary>
 	/// Disables player movement through use of arrow keys
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	public void FreezePlayer() 
 	{
 		GameObject varGameObject = GameObject.FindWithTag(Constants.PLAYER);
 		varGameObject.GetComponent<PlayerController>().enabled = false;
 	}
 
+	/// <name>
+	/// UnfreezePlayer
+	/// </name>
 	/// <summary>
 	/// Enables player movement through use of arrow keys
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	public void UnfreezePlayer() 
 	{
 		GameObject varGameObject = GameObject.FindWithTag(Constants.PLAYER);
 		varGameObject.GetComponent<PlayerController>().enabled = true;
 	}
 
+	/// <name>
+	/// Start
+	/// </name>
 	/// <summary>
 	/// Use this for initialization
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void Start ()
 	{
 		// makes addition text mesh object visible on screen
@@ -100,12 +162,19 @@ public class MainAreaDesign : MonoBehaviour
 		equalityText.GetComponent<TextMesh>().GetComponent<MeshRenderer>().sortingOrder = 2;
 	}
 
-
-
+	/// <name>
+	/// SetIncentives
+	/// </name>
 	/// <summary>
 	/// Turn off incentives not earned.
 	/// Easier this way because if they start out turned off, they can't be found
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	private void SetIncentives() 
 	{
 
@@ -244,10 +313,19 @@ public class MainAreaDesign : MonoBehaviour
 		}
 	}
 
+	/// <name>
+	/// SetStars
+	/// </name>
 	/// <summary>
 	/// Display a star for every time the user restarts the game.
 	/// Game can only restart if they beat all levels
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	private void SetStars() 
 	{
 		Transform parent = GameObject.Find ("Canvas").transform;

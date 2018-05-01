@@ -24203,8 +24203,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.8, y: -3.2}
-  m_SizeDelta: {x: 2520.3, y: 1074.7}
+  m_AnchoredPosition: {x: 2.81, y: -1.9}
+  m_SizeDelta: {x: 2654.06, y: 1148.09}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1484079726
 MonoBehaviour:
@@ -24239,15 +24239,16 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "INSTRUCTIONS:\L\n- Move player with arrow keys\n- Follow paths to play
-    mini games!\n    - Mini games available are: Counting, Addition, and Subtraction\n-
-    Complete a level in a mini game by answering 10 questions right\n    - There are
-    3 levels for each mini game\n    - As you move to the next level, the questions
-    will get harder\n- Every time you complete a level, something new will appear
-    in this main area!\n- Use the Menu button to save progress or save and quit\n-
-    Menu also lets you access timed challenges!\n    - You get to choose between addition
-    and subtraction and the difficulty of the \n\t\tquestions\n    - You have 1 minute
-    to answer as many questions correctly as you can\n    - Try to beat your high
-    score for each level!"
+    mini games!\n    - Mini games available are: Counting, Addition, Subtraction,
+    and Equality\n- Complete a level in a mini game by answering 10 questions right\n
+    \   - There are 3 levels for each mini game\n    - As you move to the next level,
+    the questions will get harder\n- Every time you complete a level, something new
+    will appear in this main area!\n\n- Use the Menu button to save progress and quit
+    or view your progress\n- Once you beat all levels, you can reset your progress
+    from the main menu to earn stars\n\n- Menu also lets you access timed challenges!\n
+    \   - You get to choose between addition and subtraction and the difficulty of
+    the questions\n    - You have 1 minute to answer as many questions correctly as
+    you can\n    - Try to beat your high score for each level!"
 --- !u!222 &1484079727
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26163,6 +26164,7 @@ MonoBehaviour:
     type: 2}
   instructions: {fileID: 1464821351}
   blackOutSheet: {fileID: 255781743}
+  resetPrompt: {fileID: 655860718}
   yellowStar: {fileID: 1669482270529278, guid: f4529b5d22bf942959eafe7e91212598, type: 2}
 --- !u!223 &1579107791
 Canvas:
@@ -29432,7 +29434,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
-    m_LineSpacing: 1
+    m_LineSpacing: 0.8
   m_Text: 
 --- !u!222 &1700414862
 CanvasRenderer:
@@ -30374,6 +30376,19 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1585106890}
+        m_MethodName: set_text
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Are you sure you want to reset? All of your game scores
+            will be reset to zero and you will earn a star. Your timed challenge progress
+            will not be erased.
           m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,

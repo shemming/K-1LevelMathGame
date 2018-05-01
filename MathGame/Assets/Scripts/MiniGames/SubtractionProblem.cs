@@ -51,9 +51,18 @@ public class SubtractionProblem : MonoBehaviour {
 	private PlayAnimation chestScript;
 	#endregion
 
+	/// <name>
+	/// Start
+	/// </name>
 	/// <summary>
 	/// Use this for initialization
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void Start ()
 	{
 		// get access to script on Chest and Coin object to play it's animation
@@ -91,9 +100,18 @@ public class SubtractionProblem : MonoBehaviour {
 		inputField.characterLimit = 5;
 	}
 
+	/// <name>
+	/// Update
+	/// </name>
 	/// <summary>
 	/// Update is called once per frame, checks user input
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void Update () 
 	{
 		
@@ -123,10 +141,19 @@ public class SubtractionProblem : MonoBehaviour {
 		}
 	}
 
+	/// <name>
+	/// CheckAnswer
+	/// </name>
 	/// <summary>
 	/// Checks the answer to the math problem given by the user.
 	/// If correct, a new math problem is generated.
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void CheckAnswer() 
 	{
 
@@ -173,9 +200,18 @@ public class SubtractionProblem : MonoBehaviour {
 		}
 	}
 
+	/// <name>
+	/// ExitGame
+	/// </name>
 	/// <summary>
 	/// Save game data and return to the welcome screen of the main menu
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	private void ExitGame() 
 	{
 		gameStats.SavePlayer ();

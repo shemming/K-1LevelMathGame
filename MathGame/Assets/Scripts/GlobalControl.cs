@@ -11,9 +11,18 @@ public class GlobalControl : MonoBehaviour {
 	public Game savedGameData;
 	private string filename;
 
+	/// <name>
+	/// Awake
+	/// </name>
 	/// <summary>
 	/// Ensure there is only one instance in existence at a time
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void Awake() 
 	{
 		if (Instance == null)
@@ -29,9 +38,18 @@ public class GlobalControl : MonoBehaviour {
 		}
 	}
 
+	/// <name>
+	/// LoadPlayer
+	/// </name>
 	/// <summary>
 	/// Store all game data to carry around
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	public void LoadPlayer() 
 	{
 		savedGameData = new Game ();
@@ -67,12 +85,22 @@ public class GlobalControl : MonoBehaviour {
 		savedGameData.subtractionChallenge.l3HighScore = Instance.savedGameData.subtractionChallenge.l3HighScore;
 
 		savedGameData.instructionsShown = Instance.savedGameData.instructionsShown;
+		savedGameData.resetPromptShown = Instance.savedGameData.resetPromptShown;
 		savedGameData.gamesCompleted = Instance.savedGameData.gamesCompleted;
 	}
 
+	/// <name>
+	/// SavePlayer
+	/// </name>
 	/// <summary>
 	/// update game data before moving between scenes
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	public void SavePlayer() {
 		
 		// save all addition game data
@@ -106,14 +134,24 @@ public class GlobalControl : MonoBehaviour {
 		Instance.savedGameData.subtractionChallenge.l3HighScore = savedGameData.subtractionChallenge.l3HighScore;
 
 		Instance.savedGameData.instructionsShown = savedGameData.instructionsShown;
+		Instance.savedGameData.resetPromptShown = savedGameData.resetPromptShown;
 		Instance.savedGameData.gamesCompleted = savedGameData.gamesCompleted;
 
 	}
 
+	/// <name>
+	/// Save
+	/// </name>
 	/// <summary>
 	/// Saves the game data to the file the game corresponds to
 	/// </summary>
 	/// <param name="s_filename">S filename.</param>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	public static void Save(string s_filename = null) 
 	{
 		
@@ -129,10 +167,19 @@ public class GlobalControl : MonoBehaviour {
 		File.WriteAllText (@path, json);
 	}
 
+	/// <name>
+	/// Load
+	/// </name>
 	/// <summary>
 	/// Load game data that corresponds to the file name passed in
 	/// </summary>
 	/// <param name="s_filename">the name of the file being loaded</param>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	public static void Load(string s_filename = null) {
 
 		// set the instance's file name if not already for future use
@@ -152,11 +199,20 @@ public class GlobalControl : MonoBehaviour {
 		}
 	}
 
+	/// <name>
+	/// IsGameStarted
+	/// </name>
 	/// <summary>
 	/// Checks if user has any progess in current game
 	/// </summary>
 	/// <returns><c>true</c>, if game started was started, <c>false</c> otherwise.</returns>
-	public bool isGameStarted() 
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
+	public bool IsGameStarted() 
 	{
 		// checks if all scores are at zero
 		if (savedGameData.addition.correctAnswers == 0 && savedGameData.counting.correctAnswers == 0
@@ -170,11 +226,20 @@ public class GlobalControl : MonoBehaviour {
 		return true;
 	}
 
+	/// <name>
+	/// IsGameComplete
+	/// </name>
 	/// <summary>
 	/// Checks if the user beat all 3 levels for every mini game available
 	/// </summary>
 	/// <returns><c>true</c>, if game was completed, <c>false</c> otherwise.</returns>
-	public bool isGameComplete() 
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
+	public bool IsGameComplete() 
 	{
 		// checks if all scores are at least 30
 		if (savedGameData.addition.correctAnswers >= 30 && savedGameData.counting.correctAnswers >= 30

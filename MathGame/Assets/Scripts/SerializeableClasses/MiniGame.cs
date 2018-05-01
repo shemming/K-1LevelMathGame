@@ -5,9 +5,18 @@ using UnityEngine;
 
 namespace AssemblyCSharp
 {
+	/// <name>
+	/// MiniGame
+	/// </name>
 	/// <summary>
 	/// Holds data for one mini game (adding, subtracting, etc.)
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	[System.Serializable]
 	public class MiniGame
 	{

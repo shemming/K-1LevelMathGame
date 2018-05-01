@@ -2,9 +2,18 @@
 
 namespace AssemblyCSharp
 {
+	/// <name>
+	/// Game
+	/// </name>
 	/// <summary>
 	/// Holds data for one game
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	[System.Serializable]
 	public class Game
 	{
@@ -16,6 +25,9 @@ namespace AssemblyCSharp
 
 		// keeps track of how many times user starts over
 		public int gamesCompleted;
+
+		// Keeps track of whether the user was prompted to reset their game progress
+		public bool resetPromptShown;
 
 		// Keeps track of progress in all mini games
 		public MiniGame addition;
@@ -30,6 +42,7 @@ namespace AssemblyCSharp
 		public Game ()
 		{
 			this.instructionsShown = false;
+			this.resetPromptShown = false;
 			this.gamesCompleted = 0;
 
 			this.addition = new MiniGame ();

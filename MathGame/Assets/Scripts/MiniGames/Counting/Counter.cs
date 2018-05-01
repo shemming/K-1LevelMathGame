@@ -25,10 +25,19 @@ namespace AssemblyCSharp
 		/// </summary>
 		private const int MAX_LEVEL = 3;
 
+		/// <name>
+		/// Counter
+		/// </name>
 		/// <summary>
 		/// Initializes a new instance of the Counter class.
 		/// </summary>
 		/// <param name="level">Level of equation difficulty. Can be > 1 if user has saved data.</param>
+		/// <author>
+		/// Sabrina Hemming
+		/// </author>
+		/// <date>
+		/// 
+		/// </date>
 		public Counter (int level)
 		{
 			
@@ -40,26 +49,59 @@ namespace AssemblyCSharp
 			GenerateNewNumber ();
 		}
 
+		/// <name>
+		/// GenerateNewNumber
+		/// </name>
 		/// <summary>
 		/// Generates a new number for the user to find
 		/// </summary>
+		/// <author>
+		/// Sabrina Hemming
+		/// </author>
+		/// <date>
+		/// 
+		/// </date>
 		public void GenerateNewNumber() 
 		{
-			num = rnd.Next (0, level * increaseRange);
+			int tmp = 0;
+			do
+			{
+				tmp = rnd.Next (0, level * increaseRange);
+			}
+			while(tmp != num);
+			num = tmp;
 		}
 
+		/// <name>
+		/// Num
+		/// </name>
 		/// <summary>
 		/// returns number to be guessed
 		/// </summary>
+		/// <author>
+		/// Sabrina Hemming
+		/// </author>
+		/// <date>
+		/// 
+		/// </date>
 		public int Num
 		{
 			get { return num; }
 		}
 
+		/// <name>
+		/// Level
+		/// </name>
 		/// <summary>
 		/// Gets or sets the level. Won't let level be set lower than 1.
 		/// </summary>
 		/// <value>The level.</value>
+		/// <author>
+		/// Sabrina Hemming
+		/// </author>
+		/// <date>
+		/// 
+		/// </date>
 		public int Level 
 		{
 			get { return level; }
@@ -71,10 +113,19 @@ namespace AssemblyCSharp
 			}
 		}
 
+		/// <name>
+		/// IncreaseLevel
+		/// </name>
 		/// <summary>
 		/// Increases to the next level of difficulty.
 		/// Doesn't allow level to pass the max set level
 		/// </summary>
+		/// <author>
+		/// Sabrina Hemming
+		/// </author>
+		/// <date>
+		/// 
+		/// </date>
 		public void IncreaseLevel() 
 		{
 			if (level < MAX_LEVEL)

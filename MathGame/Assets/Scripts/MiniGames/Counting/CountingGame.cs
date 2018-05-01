@@ -47,9 +47,18 @@ public class CountingGame : MonoBehaviour {
 	private System.Random rnd;
 	#endregion
 
+	/// <name>
+	/// Start
+	/// </name>
 	/// <summary>
 	/// Use this for initialization
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void Start () {
 		
 		// get access to saved addition game info to update
@@ -86,9 +95,18 @@ public class CountingGame : MonoBehaviour {
 		TurnOnFlowers ();
 	}
 
+	/// <name>
+	/// Update
+	/// </name>
 	/// <summary>
 	/// Update is called once per frame, checks user input
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void Update () {
 
 		// if the user presses enter, take that as if they clicked the enter button
@@ -117,11 +135,20 @@ public class CountingGame : MonoBehaviour {
 		}
 	}
 
+	/// <name>
+	/// TurnOnFlowers
+	/// </name>
 	/// <summary>
 	/// Makes random flowers on screen visible to the user.
 	/// The number of flowers made visible equals the number
 	/// that the user is supposed to guess.
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	private void TurnOnFlowers() 
 	{
 		// makes all the flowers in the scene invisible to start with a blank slate
@@ -150,11 +177,20 @@ public class CountingGame : MonoBehaviour {
 
 	}
 
+	/// <name>
+	/// CheckAnswer
+	/// </name>
 	/// <summary>
 	/// Checks the answer given by the user.
 	/// If correct, a new number to be counted is generated
 	/// and flowers on screen are updated to match
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	private void CheckAnswer() {
 		// get the number entered by the user.
 		// don't really need to validate it's a number because the input
@@ -188,6 +224,18 @@ public class CountingGame : MonoBehaviour {
 		}
 	}
 
+	/// <name>
+	/// ExitGame
+	/// </name>
+	/// <summary>
+	/// Exits back to the main area.
+	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void ExitGame() 
 	{
 		gameStats.SavePlayer ();

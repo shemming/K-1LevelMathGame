@@ -26,9 +26,18 @@ public class MainAreaMenu : MonoBehaviour {
 	public GameObject incentiveDisplay;
 	private MainAreaDesign incentiveDisplayScript;
 
+	/// <name>
+	/// Start
+	/// </name>
 	/// <summary>
 	/// Use this for initialization
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void Start () {
 		
 		saveQuitButton
@@ -47,31 +56,53 @@ public class MainAreaMenu : MonoBehaviour {
 			.onClick
 			.AddListener (DisplayInstructions);
 
+		resetButton
+			.onClick
+			.AddListener (DisplayResetPrompt);
+
 		// get access to script on that displays the earned animations
 		incentiveDisplayScript = incentiveDisplay.GetComponent<MainAreaDesign> ();
 
 	}
 
+	/// <name>
+	/// CheckProgress
+	/// </name>
 	/// <summary>
 	/// If the player has completed all levels of all games and has reset their progress
 	/// under 10 times, the restart button should not be shown. Otherwise it is.
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	public void CheckProgress()
 	{
-		if (!gameManager.isGameComplete() || gameManager.savedGameData.gamesCompleted >= 10)
+		if (!gameManager.IsGameComplete() || gameManager.savedGameData.gamesCompleted >= 10)
 		{
 			resetButton.gameObject.SetActive (false);
 		}
 	}
 
+	/// <name>
+	/// SaveQuit
+	/// </name>
 	/// <summary>
 	/// Saves user's progress and returns to the main menu
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	private void SaveQuit() 
 	{
 		// if they haven't made any progess, have instructions show when
 		// they come back to play
-		if (!gameManager.isGameStarted ())
+		if (!gameManager.IsGameStarted ())
 		{
 			gameManager.savedGameData.instructionsShown = false;
 		}
@@ -80,9 +111,18 @@ public class MainAreaMenu : MonoBehaviour {
 		SceneManager.LoadScene (Constants.SceneNames.MAIN_MENU);
 	}
 
+	/// <name>
+	/// Challenge
+	/// </name>
 	/// <summary>
 	/// Goes to the main menu of the timed challenges
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	private void Challenge() 
 	{
 		gameManager.SavePlayer ();
@@ -90,9 +130,18 @@ public class MainAreaMenu : MonoBehaviour {
 		SceneManager.LoadScene (Constants.SceneNames.CHALLENGE);
 	}
 
+	/// <name>
+	/// DisplayIncentives
+	/// </name>
 	/// <summary>
 	/// Shows user's progress in all games
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	private void DisplayIncentives() 
 	{
 		// display scores and gray out the scene behind 
@@ -100,14 +149,22 @@ public class MainAreaMenu : MonoBehaviour {
 		blackOutSheet.SetActive (true);
 		SetStoryText ();
 
-		// prevent user from moving around the player while instructions are shown
-		GameObject varGameObject = GameObject.FindWithTag(Constants.PLAYER);
-		varGameObject.GetComponent<PlayerController>().enabled = false;
+		// prevent user from moving around the player while scores are shown
+		incentiveDisplayScript.FreezePlayer ();
 	}
 
+	/// <name>
+	/// DisplayInstructions
+	/// </name>
 	/// <summary>
 	/// Shows instructions if user wants to refer back to them
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	private void DisplayInstructions() 
 	{
 		// display instructions and gray out the scene behind 
@@ -115,13 +172,42 @@ public class MainAreaMenu : MonoBehaviour {
 		blackOutSheet.SetActive (true);
 
 		// prevent user from moving around the player while instructions are shown
-		GameObject varGameObject = GameObject.FindWithTag(Constants.PLAYER);
-		varGameObject.GetComponent<PlayerController>().enabled = false;
+		incentiveDisplayScript.FreezePlayer ();
 	}
 
+	/// <name>
+	/// DisplayResetPrompt
+	/// </name>
+	/// <summary>
+	/// Confirm the user actually wants to reset all of their game data before actually doing it
+	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
+	private void DisplayResetPrompt()
+	{
+		resetResultScreen.SetActive (true);
+		resetResultScreen.GetComponentInChildren<Text> ().text = "Are you sure you want to reset? All of your game " +
+			"scores will be reset to zero and you will earn a star. Your timed challenge progress will not be erased.";
+		blackOutSheet.SetActive (true);
+		incentiveDisplayScript.FreezePlayer ();
+	}
+
+	/// <name>
+	/// SetStoryText
+	/// </name>
 	/// <summary>
 	/// Set displayed text to show the mini game progress
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	public void SetStoryText() 
 	{
 		string result = "Addition: \n\tLevel: ";
@@ -136,12 +222,25 @@ public class MainAreaMenu : MonoBehaviour {
 		result += gameManager.savedGameData.counting.level + "\n\tCorrect Answers: ";
 		result += gameManager.savedGameData.counting.correctAnswers;
 
+		result += "\n\nEquality: \n\tLevel: ";
+		result += gameManager.savedGameData.equality.level + "\n\tCorrect Answers: ";
+		result += gameManager.savedGameData.equality.correctAnswers;
+
 		scores.text = result;
 	}
 
+	/// <name>
+	/// SetTimedText
+	/// </name>
 	/// <summary>
 	/// Set displayed text to show the timed challenge progress
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	public void SetTimedText() 
 	{
 		string result = "Addition High Scores: \n\tLevel 1: ";
@@ -157,10 +256,19 @@ public class MainAreaMenu : MonoBehaviour {
 		scores.text = result;
 	}
 
+	/// <name>
+	/// ResetGame
+	/// </name>
 	/// <summary>
 	/// Either resets game or allows user to back out of resetting game
 	/// </summary>
 	/// <param name="response">user's response to resetting the game. controlled by button input</param>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	public void ResetGame(string response) 
 	{
 		// make the prompt pop up go away
@@ -204,7 +312,7 @@ public class MainAreaMenu : MonoBehaviour {
 		{
 			// display message that no changes have been made to the save data
 			Text result = resetResultScreen.GetComponentInChildren<Text> ();
-			result.text = "Your progress has not been changed.";
+			result.text = "Your progress has not been changed. Check back in the main menu if you change your mind!";
 			resetResultScreen.SetActive(true);
 		}
 	}

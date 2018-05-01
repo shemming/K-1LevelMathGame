@@ -12,9 +12,18 @@ public class MainAreaTriggers : MonoBehaviour {
 	/// </summary>
 	public string area;
 
+	/// <name>
+	/// OnTriggerEnter2D
+	/// </name>
 	/// <summary>
 	/// Loads the scene the player is walking into 
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	public void OnTriggerEnter2D () 
 	{
 		SceneManager.LoadScene(area);

@@ -29,9 +29,18 @@ namespace AssemblyCSharp
 		// holds logic for the equality equations player is to solve
 		private EqualityEquation equation;
 
+		/// <name>
+		/// Start
+		/// </name>
 		/// <summary>
 		/// Use this for initialization. 
 		/// </summary>
+		/// <author>
+		/// Sabrina Hemming
+		/// </author>
+		/// <date>
+		/// 
+		/// </date>
 		void Start ()
 		{
 			// get access to saved addition game info to update
@@ -60,18 +69,36 @@ namespace AssemblyCSharp
 				.AddListener (delegate{CheckAnswer(EqualityEquation.EqualityType.EqualTo);});
 		}
 
+		/// <name>
+		/// ExitToMainMenu
+		/// </name>
 		/// <summary>
 		/// Brings user back to the main area
 		/// </summary>
+		/// <author>
+		/// Sabrina Hemming
+		/// </author>
+		/// <date>
+		/// 
+		/// </date>
 		void ExitToMainMenu () 
 		{
 			gameStats.SavePlayer ();
 			SceneManager.LoadScene(Constants.SceneNames.MAIN_AREA);
 		}
 
+		/// <name>
+		/// CheckAnswer
+		/// </name>
 		/// <summary>
 		///  checks if the user's choice makes the comparison correct
 		/// </summary>
+		/// <author>
+		/// Sabrina Hemming
+		/// </author>
+		/// <date>
+		/// 
+		/// </date>
 		void CheckAnswer(EqualityEquation.EqualityType sign) 
 		{
 			if (sign == equation.Sign)
@@ -90,10 +117,6 @@ namespace AssemblyCSharp
 
 				// update score on the screen
 				score.text = "Score: " + equalityGame.correctAnswers.ToString();
-			}
-			else
-			{
-
 			}
 		}
 	}

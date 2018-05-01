@@ -25,10 +25,18 @@ public class PlayerController : MonoBehaviour {
 	/// </summary>
 	private bool left, right;
 
-
+	/// <name>
+	/// Start
+	/// </name>
 	/// <summary>
 	/// Used for initialization
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void Start()
 	{
 		//Get and store a reference to the Rigidbody2D component 
@@ -43,9 +51,18 @@ public class PlayerController : MonoBehaviour {
 		right = true;
 	}
 
+	/// <name>
+	/// Update
+	/// </name>
 	/// <summary>
 	/// Update is called once per frame, used for player animation
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void Update() 
 	{
 		// set bool to know the last left or right arrow clicked if going up or down
@@ -82,9 +99,19 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	/// <name>
+	/// FixedUpdate
+	/// </name>
 	/// <summary>
 	/// Called every fixed framerate frame. Should be used instead of Update when dealing with Rigidbody.
+	/// Used to move the character across the screen when player uses arrow keys
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void FixedUpdate() 
 	{
 		//Store the current horizontal input in the float moveHorizontal.

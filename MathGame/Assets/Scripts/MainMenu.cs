@@ -40,7 +40,18 @@ public class MainMenu : MonoBehaviour
 	private GameObject welcomeScreen;
 	private GameObject continueGameScreen;
 
-	// Use this for initialization
+	/// <name>
+	/// Start
+	/// </name>
+	/// <summary>
+	/// Use this for initialization
+	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void Start () 
 	{
 		
@@ -82,10 +93,19 @@ public class MainMenu : MonoBehaviour
 			.AddListener (ContinueGame);
 	}
 
+	/// <name>
+	/// Update
+	/// </name>
 	/// <summary>
 	/// Use to keep track of the file name the user selects in the
 	/// dropdown menu.
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	void Update()
 	{
 		//Keep the current index of the Dropdown in a variable
@@ -94,9 +114,18 @@ public class MainMenu : MonoBehaviour
 		continueFromFilename = dropdown.options[dropdownValue].text;
 	}
 
+	/// <name>
+	/// StartNewGame
+	/// </name>
 	/// <summary>
 	/// Prompt user for name to save game under
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	private void StartNewGame() 
 	{
 		
@@ -110,9 +139,18 @@ public class MainMenu : MonoBehaviour
 
 	}
 
+	/// <name>
+	/// ChooseContinueGame
+	/// </name>
 	/// <summary>
 	/// Set up screen to have user choose which game to continue
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	public void ChooseContinueGame() 
 	{
 		// get access to dropdown menu of saved games
@@ -147,19 +185,37 @@ public class MainMenu : MonoBehaviour
 		backButton.gameObject.SetActive (true);
 	}
 
+	/// <name>
+	/// ContinueGame
+	/// </name>
 	/// <summary>
 	/// Loads the file selected from the dropdown menu and loads 
 	/// the main area scene
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	private void ContinueGame() 
 	{
 		GlobalControl.Load (continueFromFilename);
 		SceneManager.LoadScene(Constants.SceneNames.MAIN_AREA);
 	}
 
+	/// <name>
+	/// SaveAndContinue
+	/// </name>
 	/// <summary>
 	/// Confirm valid game name and then start the game
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	private void SaveAndContinue() 
 	{
 
@@ -167,7 +223,7 @@ public class MainMenu : MonoBehaviour
 		string filename = userSaveNameInput.text;
 
 		// make sure there are no unacceptable characters in user input
-		if (isValidGameName(filename)) {
+		if (IsValidGameName(filename)) {
 			
 			string path = Application.persistentDataPath + "/" + filename + Constants.MainMenu.FILE_EXTENSION;
 
@@ -192,9 +248,18 @@ public class MainMenu : MonoBehaviour
 		}
 	}
 
+	/// <name>
+	/// GoBack
+	/// </name>
 	/// <summary>
 	/// Set up screen for the main menu
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
 	private void GoBack() 
 	{
 		
@@ -207,13 +272,22 @@ public class MainMenu : MonoBehaviour
 		continueGameScreen.SetActive (false);
 	}
 
+	/// <name>
+	/// IsValidGameName
+	/// </name>
 	/// <summary>
 	/// Determines if the name submitted is a valid game name
 	/// in terms of characters used.
 	/// </summary>
 	/// <returns>true if valid game name was used, false otherwise.</returns>
 	/// <param name="name">the name of the game being created</param>
-	private bool isValidGameName (string name) 
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 
+	/// </date>
+	private bool IsValidGameName (string name) 
 	{
 		string pattern = "^[\\w ]+$";
 		Regex regex = new Regex (pattern);
