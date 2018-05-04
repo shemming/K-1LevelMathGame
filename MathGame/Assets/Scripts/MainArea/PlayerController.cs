@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using AssemblyCSharp;
 using UnityEngine;
 
+/// <summary>
+/// Controls player movement and animation in main area
+/// </summary>
 public class PlayerController : MonoBehaviour {
 
 	/// <summary>
@@ -35,7 +38,7 @@ public class PlayerController : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/12/18
 	/// </date>
 	void Start()
 	{
@@ -61,7 +64,7 @@ public class PlayerController : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/12/18
 	/// </date>
 	void Update() 
 	{
@@ -110,7 +113,7 @@ public class PlayerController : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/12/18
 	/// </date>
 	void FixedUpdate() 
 	{

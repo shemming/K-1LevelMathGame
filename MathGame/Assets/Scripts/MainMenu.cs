@@ -8,6 +8,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// Script attached to canvas object in the main menu scene
+/// </summary>
 public class MainMenu : MonoBehaviour 
 {
 
@@ -50,7 +53,7 @@ public class MainMenu : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/16/18
 	/// </date>
 	void Start () 
 	{
@@ -59,6 +62,9 @@ public class MainMenu : MonoBehaviour
 		welcomeScreen = GameObject.Find(Constants.MainMenu.Views.WELCOME_SCREEN);
 		newGameScreen = GameObject.Find (Constants.MainMenu.Views.NEW_SCREEN);
 		continueGameScreen = GameObject.Find (Constants.MainMenu.Views.CONTINUE_SCREEN);
+
+		// only have continue button enabled if there are games to continue
+		SetContinueButton ();
 
 		// have only the welcome screen visible when starting
 		backButton.gameObject.SetActive (false);
@@ -104,7 +110,7 @@ public class MainMenu : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/16/18
 	/// </date>
 	void Update()
 	{
@@ -112,6 +118,15 @@ public class MainMenu : MonoBehaviour
 		dropdownValue = dropdown.value;
 		//Change the message to say the name of the current Dropdown selection using the value
 		continueFromFilename = dropdown.options[dropdownValue].text;
+
+		if (userSaveNameInput.text == "")
+		{
+			submitNewGameButton.interactable = false;
+		}
+		else
+		{
+			submitNewGameButton.interactable = true;
+		}
 	}
 
 	/// <name>
@@ -124,7 +139,7 @@ public class MainMenu : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/16/18
 	/// </date>
 	private void StartNewGame() 
 	{
@@ -140,6 +155,35 @@ public class MainMenu : MonoBehaviour
 	}
 
 	/// <name>
+	/// SetContinueButton
+	/// </name>
+	/// <summary>
+	/// Only have the continue button clickable if there are games to continue playing
+	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 5/14/18
+	/// </date>
+	public void SetContinueButton()
+	{
+		List<string> filenames = Directory.GetFiles(Application.persistentDataPath)
+			.Select(file => Path.GetFileName(file))
+			.Where(file => file.Contains(Constants.MainMenu.FILE_EXTENSION))
+			.SkipWhile(file => file == "")
+			.ToList();
+		if (filenames.Count < 1)
+		{
+			chooseContinueButton.interactable = false;
+		}
+		else
+		{
+			chooseContinueButton.interactable = true;
+		}
+	}
+
+	/// <name>
 	/// ChooseContinueGame
 	/// </name>
 	/// <summary>
@@ -149,7 +193,7 @@ public class MainMenu : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/16/18
 	/// </date>
 	public void ChooseContinueGame() 
 	{
@@ -159,7 +203,7 @@ public class MainMenu : MonoBehaviour
 		// set the dropdown menu to hold all the file names for saved games
 		dropdown.ClearOptions (); 
 
-
+		Debug.Log (Application.persistentDataPath);
 		List<string> filenames = Directory.GetFiles(Application.persistentDataPath)
 			.Select(file => Path.GetFileName(file))
 			.Where(file => file.Contains(Constants.MainMenu.FILE_EXTENSION))
@@ -196,7 +240,7 @@ public class MainMenu : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/16/18
 	/// </date>
 	private void ContinueGame() 
 	{
@@ -214,7 +258,7 @@ public class MainMenu : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/16/18
 	/// </date>
 	private void SaveAndContinue() 
 	{
@@ -258,13 +302,14 @@ public class MainMenu : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/16/18
 	/// </date>
 	private void GoBack() 
 	{
 		
 		// turns on UI objects for the welcome screen
 		welcomeScreen.SetActive (true);
+		SetContinueButton ();
 
 		// turns off all other UI elements
 		backButton.gameObject.SetActive (false);
@@ -285,7 +330,7 @@ public class MainMenu : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/17/18
 	/// </date>
 	private bool IsValidGameName (string name) 
 	{

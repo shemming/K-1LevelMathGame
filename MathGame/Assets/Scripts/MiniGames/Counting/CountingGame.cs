@@ -6,7 +6,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
+/// <summary>
+/// Script that runs the counting mini game. Attached to the canvas object.
+/// </summary>
 public class CountingGame : MonoBehaviour {
 
 
@@ -57,7 +59,7 @@ public class CountingGame : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/10/18
 	/// </date>
 	void Start () {
 		
@@ -105,7 +107,7 @@ public class CountingGame : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/10/18
 	/// </date>
 	void Update () {
 
@@ -147,7 +149,7 @@ public class CountingGame : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/11/18
 	/// </date>
 	private void TurnOnFlowers() 
 	{
@@ -189,7 +191,7 @@ public class CountingGame : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/11/18
 	/// </date>
 	private void CheckAnswer() {
 		// get the number entered by the user.
@@ -234,7 +236,7 @@ public class CountingGame : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/20/18
 	/// </date>
 	void ExitGame() 
 	{

@@ -2,6 +2,9 @@
 
 namespace AssemblyCSharp
 {
+	/// <summary>
+	/// Constants used throughout the game
+	/// </summary>
 	public class Constants
 	{
 		/// <summary>
@@ -20,7 +23,7 @@ namespace AssemblyCSharp
 		/// Sabrina Hemming
 		/// </author>
 		/// <date>
-		/// 
+		/// 4/20/18
 		/// </date>
 		public class SceneNames
 		{
@@ -42,7 +45,7 @@ namespace AssemblyCSharp
 		/// Sabrina Hemming
 		/// </author>
 		/// <date>
-		/// 
+		/// 4/20/18
 		/// </date>
 		public class MainArea 
 		{

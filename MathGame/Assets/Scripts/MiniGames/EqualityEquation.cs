@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Generates new equality equations and any logic that goes with it
+/// </summary>
 public class EqualityEquation {
 
 	/// <summary>
@@ -46,7 +49,7 @@ public class EqualityEquation {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/26/18
 	/// </date>
 	public EqualityEquation(int level) 
 	{
@@ -70,7 +73,7 @@ public class EqualityEquation {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/26/18
 	/// </date>
 	public void IncreaseLevel() 
 	{
@@ -91,7 +94,7 @@ public class EqualityEquation {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/26/18
 	/// </date>
 	public void GenerateNewEquation()
 	{
@@ -135,7 +138,7 @@ public class EqualityEquation {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/26/18
 	/// </date>
 	public int Num1
 	{
@@ -152,7 +155,7 @@ public class EqualityEquation {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/26/18
 	/// </date>
 	public int Num2 
 	{
@@ -170,7 +173,7 @@ public class EqualityEquation {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/26/18
 	/// </date>
 	public int Level 
 	{
@@ -194,7 +197,7 @@ public class EqualityEquation {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/26/18
 	/// </date>
 	public EqualityType Sign
 	{
@@ -212,7 +215,7 @@ public class EqualityEquation {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/26/18
 	/// </date>
 	public string EquationString
 	{

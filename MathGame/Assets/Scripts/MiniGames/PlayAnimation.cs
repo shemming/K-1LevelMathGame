@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// Plays declared animations for object it is attached to.
+/// </summary>
 public class PlayAnimation : MonoBehaviour 
 {
 
@@ -18,7 +21,7 @@ public class PlayAnimation : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/7/18
 	/// </date>
 	void Start () 
 	{
@@ -37,7 +40,7 @@ public class PlayAnimation : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/7/18
 	/// </date>
 	public void Animate(string state) 
 	{
@@ -57,7 +60,7 @@ public class PlayAnimation : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/7/18
 	/// </date>
 	public IEnumerator AnimateAndWait(string stateName) 
 	{
@@ -72,7 +75,6 @@ public class PlayAnimation : MonoBehaviour
 			length = clip.length;
 		}
 
-//		Debug.Log (length);
 		yield return new WaitForSeconds (length);
 	}
 }

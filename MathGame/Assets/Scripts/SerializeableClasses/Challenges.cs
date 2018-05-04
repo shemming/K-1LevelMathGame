@@ -12,7 +12,7 @@ namespace AssemblyCSharp
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/25/18
 	/// </date>
 	[System.Serializable]
 	public class Challenge

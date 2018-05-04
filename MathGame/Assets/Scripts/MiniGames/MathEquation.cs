@@ -4,7 +4,7 @@ using UnityEngine;
 namespace AssemblyCSharp
 {
 	/// <summary>
-	/// holds math equation
+	/// holds addition / subtraction equation and its logic
 	/// </summary>
 	public class MathEquation
 	{
@@ -55,7 +55,7 @@ namespace AssemblyCSharp
 		/// Sabrina Hemming
 		/// </author>
 		/// <date>
-		/// 
+		/// 3/2/18
 		/// </date>
 		public MathEquation (int increaseRange, int level, EquationType type)
 		{
@@ -101,7 +101,7 @@ namespace AssemblyCSharp
 		/// Sabrina Hemming
 		/// </author>
 		/// <date>
-		/// 
+		/// 3/2/18
 		/// </date>
 		public string EquationString 
 		{
@@ -129,7 +129,7 @@ namespace AssemblyCSharp
 		/// Sabrina Hemming
 		/// </author>
 		/// <date>
-		/// 
+		/// 3/2/18
 		/// </date>
 		public int Sum 
 		{
@@ -147,7 +147,7 @@ namespace AssemblyCSharp
 		/// Sabrina Hemming
 		/// </author>
 		/// <date>
-		/// 
+		/// 3/2/18
 		/// </date>
 		public int Difference 
 		{
@@ -165,7 +165,7 @@ namespace AssemblyCSharp
 		/// Sabrina Hemming
 		/// </author>
 		/// <date>
-		/// 
+		/// 3/2/18
 		/// </date>
 		public int Level 
 		{
@@ -189,7 +189,7 @@ namespace AssemblyCSharp
 		/// Sabrina Hemming
 		/// </author>
 		/// <date>
-		/// 
+		/// 3/2/18
 		/// </date>
 		public void IncreaseLevel() 
 		{
@@ -212,7 +212,7 @@ namespace AssemblyCSharp
 		/// Sabrina Hemming
 		/// </author>
 		/// <date>
-		/// 
+		/// 3/2/18
 		/// </date>
 		public void GenerateNewEquation()
 		{

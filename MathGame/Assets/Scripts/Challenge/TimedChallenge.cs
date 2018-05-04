@@ -5,6 +5,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// Tests user to see how many math problems they can solve
+/// in one minute
+/// </summary>
 public class TimedChallenge : MonoBehaviour 
 {
 
@@ -72,7 +76,7 @@ public class TimedChallenge : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/22/18
 	/// </date>
 	void Start () 
 	{
@@ -158,11 +162,6 @@ public class TimedChallenge : MonoBehaviour
 		gameStats = gameStatsGO.GetComponent<GlobalControl> ();
 		highScore = gameStats.savedGameData.additionChallenge.l1HighScore;
 
-
-
-
-		// ADD A COUNTDOWN
-
 	}
 
 	///	<name>
@@ -176,7 +175,7 @@ public class TimedChallenge : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/22/18
 	/// </date>
 	void UpdateTimer() {
 		if (timerText != null)
@@ -215,7 +214,7 @@ public class TimedChallenge : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/22/18
 	/// </date>
 	void Update() 
 	{
@@ -255,7 +254,7 @@ public class TimedChallenge : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/22/18
 	/// </date>
 	private void StartGame() 
 	{
@@ -289,7 +288,7 @@ public class TimedChallenge : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/22/18
 	/// </date>
 	private void EndGame() 
 	{
@@ -334,7 +333,7 @@ public class TimedChallenge : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/22/18
 	/// </date>
 	private void CheckAnswer() 
 	{
@@ -376,7 +375,7 @@ public class TimedChallenge : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/22/18
 	/// </date>
 	private void ExitToMainMenu()
 	{
@@ -389,6 +388,12 @@ public class TimedChallenge : MonoBehaviour
 	/// <summary>
 	/// Leave challenge area and go back to mini games
 	/// </summary>
+	/// <author>
+	/// Sabrina Hemming
+	/// </author>
+	/// <date>
+	/// 4/22/18
+	/// </date>
 	private void SwitchToStoryMode() 
 	{
 		SceneManager.LoadScene(Constants.SceneNames.MAIN_AREA);
@@ -405,7 +410,7 @@ public class TimedChallenge : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/22/18
 	/// </date>
 	private void PlayAgain()
 	{
@@ -439,7 +444,7 @@ public class TimedChallenge : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/22/18
 	/// </date>
 	private void SetEquationType(MathEquation.EquationType eqType)
 	{
@@ -463,7 +468,7 @@ public class TimedChallenge : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/22/18
 	/// </date>
 	void SetLevel(int level)
 	{
@@ -482,7 +487,7 @@ public class TimedChallenge : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/22/18
 	/// </date>
 	private void SetStoredHighScore()
 	{
@@ -529,7 +534,7 @@ public class TimedChallenge : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/22/18
 	/// </date>
 	private void GetHighScore() 
 	{

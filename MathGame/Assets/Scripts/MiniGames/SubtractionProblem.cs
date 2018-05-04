@@ -6,7 +6,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
+/// <summary>
+/// Script that runs the subtraction mini game. Attached to the canvas object.
+/// </summary>
 public class SubtractionProblem : MonoBehaviour {
 
 	#region Variable Declaration
@@ -61,7 +63,7 @@ public class SubtractionProblem : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/7/18
 	/// </date>
 	void Start ()
 	{
@@ -110,7 +112,7 @@ public class SubtractionProblem : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/7/18
 	/// </date>
 	void Update () 
 	{
@@ -152,7 +154,7 @@ public class SubtractionProblem : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/8/18
 	/// </date>
 	void CheckAnswer() 
 	{
@@ -210,7 +212,7 @@ public class SubtractionProblem : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/20/18
 	/// </date>
 	private void ExitGame() 
 	{

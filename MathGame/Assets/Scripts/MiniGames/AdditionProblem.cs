@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
+/// <summary>
+/// Script that runs the addition mini game. Attached to the canvas object.
+/// </summary>
 public class AdditionProblem : MonoBehaviour {
 	
 	#region Variable Declaration
@@ -60,7 +63,7 @@ public class AdditionProblem : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 2/12/18
 	/// </date>
 	void Start ()
 	{
@@ -107,7 +110,7 @@ public class AdditionProblem : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 2/12/18
 	/// </date>
 	void Update () 
 	{
@@ -149,7 +152,7 @@ public class AdditionProblem : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 3/2/18
 	/// </date>
 	void CheckAnswer() 
 	{
@@ -206,7 +209,7 @@ public class AdditionProblem : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/20/18
 	/// </date>
 	void ExitGame() 
 	{

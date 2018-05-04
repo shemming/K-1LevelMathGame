@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// Controls what incentives / pop up screens are shown
+/// </summary>
 public class MainAreaDesign : MonoBehaviour
 {
 
@@ -32,7 +35,7 @@ public class MainAreaDesign : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/23/18
 	/// </date>
 	void OnEnable ()
 	{
@@ -80,7 +83,7 @@ public class MainAreaDesign : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/28/18
 	/// </date>
 	public void SetExtras() 
 	{
@@ -101,7 +104,7 @@ public class MainAreaDesign : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/23/18
 	/// </date>
 	public void FreezePlayer() 
 	{
@@ -119,7 +122,7 @@ public class MainAreaDesign : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/23/18
 	/// </date>
 	public void UnfreezePlayer() 
 	{
@@ -137,7 +140,7 @@ public class MainAreaDesign : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/20/18
 	/// </date>
 	void Start ()
 	{
@@ -173,7 +176,7 @@ public class MainAreaDesign : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/20/18
 	/// </date>
 	private void SetIncentives() 
 	{
@@ -324,7 +327,7 @@ public class MainAreaDesign : MonoBehaviour
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/28/18
 	/// </date>
 	private void SetStars() 
 	{

@@ -5,6 +5,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 using AssemblyCSharp;
 using UnityEngine;
 
+/// <summary>
+/// Carries game data between scenes and saves data to a file
+/// </summary>
 public class GlobalControl : MonoBehaviour {
 
 	public static GlobalControl Instance = null;
@@ -21,7 +24,7 @@ public class GlobalControl : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/14/18
 	/// </date>
 	void Awake() 
 	{
@@ -48,7 +51,7 @@ public class GlobalControl : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/14/18
 	/// </date>
 	public void LoadPlayer() 
 	{
@@ -99,7 +102,7 @@ public class GlobalControl : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/14/18
 	/// </date>
 	public void SavePlayer() {
 		
@@ -150,7 +153,7 @@ public class GlobalControl : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/15/18
 	/// </date>
 	public static void Save(string s_filename = null) 
 	{
@@ -178,7 +181,7 @@ public class GlobalControl : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/15/18
 	/// </date>
 	public static void Load(string s_filename = null) {
 
@@ -210,7 +213,7 @@ public class GlobalControl : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/23/18
 	/// </date>
 	public bool IsGameStarted() 
 	{
@@ -237,7 +240,7 @@ public class GlobalControl : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/28/18
 	/// </date>
 	public bool IsGameComplete() 
 	{

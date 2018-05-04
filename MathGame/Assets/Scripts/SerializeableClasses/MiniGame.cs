@@ -15,7 +15,7 @@ namespace AssemblyCSharp
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/13/18
 	/// </date>
 	[System.Serializable]
 	public class MiniGame

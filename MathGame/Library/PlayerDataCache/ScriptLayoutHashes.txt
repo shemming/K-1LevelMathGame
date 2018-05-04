@@ -1,6 +1,6 @@
-WindowsStandalone
+OSXStandalone
 PlayerPath?
-/Users/Sabrina/Desktop/WindowsMathBuild.exe
+/Users/Sabrina/Desktop/test/MacMathGame.app
 SceneListBegin?
 Assets/Scenes/MainMenu.unity
 Assets/Scenes/Main Area.unity

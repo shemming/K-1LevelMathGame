@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controls where the camera moves during gameplay
+/// </summary>
 public class CameraController : MonoBehaviour {
 
 	/// <summary>
@@ -59,7 +62,7 @@ public class CameraController : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/12/18
 	/// </date>
 	void Start () 
 	{
@@ -87,7 +90,7 @@ public class CameraController : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/12/18
 	/// </date>
 	void LateUpdate () 
 	{

@@ -2,6 +2,9 @@
 
 namespace AssemblyCSharp
 {
+	/// <summary>
+	/// Generates a new number to be counted to
+	/// </summary>
 	public class Counter
 	{
 		
@@ -36,7 +39,7 @@ namespace AssemblyCSharp
 		/// Sabrina Hemming
 		/// </author>
 		/// <date>
-		/// 
+		/// 4/10/18
 		/// </date>
 		public Counter (int level)
 		{
@@ -59,7 +62,7 @@ namespace AssemblyCSharp
 		/// Sabrina Hemming
 		/// </author>
 		/// <date>
-		/// 
+		/// 4/10/18
 		/// </date>
 		public void GenerateNewNumber() 
 		{
@@ -82,7 +85,7 @@ namespace AssemblyCSharp
 		/// Sabrina Hemming
 		/// </author>
 		/// <date>
-		/// 
+		/// 4/10/18
 		/// </date>
 		public int Num
 		{
@@ -100,7 +103,7 @@ namespace AssemblyCSharp
 		/// Sabrina Hemming
 		/// </author>
 		/// <date>
-		/// 
+		/// 4/10/18
 		/// </date>
 		public int Level 
 		{
@@ -124,7 +127,7 @@ namespace AssemblyCSharp
 		/// Sabrina Hemming
 		/// </author>
 		/// <date>
-		/// 
+		/// 4/10/18
 		/// </date>
 		public void IncreaseLevel() 
 		{

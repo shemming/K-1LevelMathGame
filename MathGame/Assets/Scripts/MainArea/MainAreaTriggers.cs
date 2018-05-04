@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// Loads a scene when a trigger is hit
+/// </summary>
 public class MainAreaTriggers : MonoBehaviour {
 
 	/// <summary>
@@ -22,7 +25,7 @@ public class MainAreaTriggers : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/14/18
 	/// </date>
 	public void OnTriggerEnter2D () 
 	{

@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 namespace AssemblyCSharp
 {
+	/// <summary>
+	/// Script that runs the equality mini game. Attached to the canvas object.
+	/// </summary>
 	public class Equality : MonoBehaviour 
 	{
 		// breings user back to the main story area
@@ -39,7 +42,7 @@ namespace AssemblyCSharp
 		/// Sabrina Hemming
 		/// </author>
 		/// <date>
-		/// 
+		/// 4/26/18
 		/// </date>
 		void Start ()
 		{
@@ -79,7 +82,7 @@ namespace AssemblyCSharp
 		/// Sabrina Hemming
 		/// </author>
 		/// <date>
-		/// 
+		/// 4/26/18
 		/// </date>
 		void ExitToMainMenu () 
 		{
@@ -97,7 +100,7 @@ namespace AssemblyCSharp
 		/// Sabrina Hemming
 		/// </author>
 		/// <date>
-		/// 
+		/// 4/26/18
 		/// </date>
 		void CheckAnswer(EqualityEquation.EqualityType sign) 
 		{

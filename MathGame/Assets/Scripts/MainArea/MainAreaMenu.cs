@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// Controls what each button in the main area menu does
+/// </summary>
 public class MainAreaMenu : MonoBehaviour {
 
 	// the buttons involved in the main menu
@@ -36,7 +39,7 @@ public class MainAreaMenu : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/24/18
 	/// </date>
 	void Start () {
 		
@@ -76,7 +79,7 @@ public class MainAreaMenu : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/24/18
 	/// </date>
 	public void CheckProgress()
 	{
@@ -96,7 +99,7 @@ public class MainAreaMenu : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/24/18
 	/// </date>
 	private void SaveQuit() 
 	{
@@ -121,7 +124,7 @@ public class MainAreaMenu : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/24/18
 	/// </date>
 	private void Challenge() 
 	{
@@ -140,7 +143,7 @@ public class MainAreaMenu : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/24/18
 	/// </date>
 	private void DisplayIncentives() 
 	{
@@ -163,7 +166,7 @@ public class MainAreaMenu : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/24/18
 	/// </date>
 	private void DisplayInstructions() 
 	{
@@ -185,7 +188,7 @@ public class MainAreaMenu : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/27/18
 	/// </date>
 	private void DisplayResetPrompt()
 	{
@@ -206,7 +209,7 @@ public class MainAreaMenu : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/24/18
 	/// </date>
 	public void SetStoryText() 
 	{
@@ -239,7 +242,7 @@ public class MainAreaMenu : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/24/18
 	/// </date>
 	public void SetTimedText() 
 	{
@@ -267,7 +270,7 @@ public class MainAreaMenu : MonoBehaviour {
 	/// Sabrina Hemming
 	/// </author>
 	/// <date>
-	/// 
+	/// 4/27/18
 	/// </date>
 	public void ResetGame(string response) 
 	{
