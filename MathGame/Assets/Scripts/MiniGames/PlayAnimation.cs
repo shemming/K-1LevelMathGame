@@ -27,6 +27,7 @@ public class PlayAnimation : MonoBehaviour
 	{
 		ani = GetComponent<Animator> ();
 	}
+	/* void Start () */
 
 	/// <name>
 	/// Animate
@@ -46,6 +47,7 @@ public class PlayAnimation : MonoBehaviour
 	{
 		ani.Play (state, -1, 0f);
 	}
+	/* public void Animate(string state) */
 
 	/// <name>
 	/// AnimateAndWait
@@ -77,4 +79,5 @@ public class PlayAnimation : MonoBehaviour
 
 		yield return new WaitForSeconds (length);
 	}
+	/* public IEnumerator AnimateAndWait(string stateName) */
 }

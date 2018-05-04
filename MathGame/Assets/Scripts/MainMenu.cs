@@ -98,6 +98,7 @@ public class MainMenu : MonoBehaviour
 			.onClick
 			.AddListener (ContinueGame);
 	}
+	/* void Start () */
 
 	/// <name>
 	/// Update
@@ -128,6 +129,7 @@ public class MainMenu : MonoBehaviour
 			submitNewGameButton.interactable = true;
 		}
 	}
+	/* void Update() */
 
 	/// <name>
 	/// StartNewGame
@@ -153,6 +155,7 @@ public class MainMenu : MonoBehaviour
 		backButton.gameObject.SetActive (true);
 
 	}
+	/* private void StartNewGame() */
 
 	/// <name>
 	/// SetContinueButton
@@ -182,6 +185,7 @@ public class MainMenu : MonoBehaviour
 			chooseContinueButton.interactable = true;
 		}
 	}
+	/* public void SetContinueButton() */
 
 	/// <name>
 	/// ChooseContinueGame
@@ -228,6 +232,7 @@ public class MainMenu : MonoBehaviour
 		continueGameScreen.SetActive (true);
 		backButton.gameObject.SetActive (true);
 	}
+	/* public void ChooseContinueGame() */
 
 	/// <name>
 	/// ContinueGame
@@ -247,6 +252,7 @@ public class MainMenu : MonoBehaviour
 		GlobalControl.Load (continueFromFilename);
 		SceneManager.LoadScene(Constants.SceneNames.MAIN_AREA);
 	}
+	/* private void ContinueGame() */
 
 	/// <name>
 	/// SaveAndContinue
@@ -291,6 +297,7 @@ public class MainMenu : MonoBehaviour
 			errorMsg.text = Constants.MainMenu.Error.GENERIC;
 		}
 	}
+	/* private void SaveAndContinue() */
 
 	/// <name>
 	/// GoBack
@@ -316,6 +323,7 @@ public class MainMenu : MonoBehaviour
 		newGameScreen.SetActive (false);
 		continueGameScreen.SetActive (false);
 	}
+	/* private void GoBack() */
 
 	/// <name>
 	/// IsValidGameName
@@ -338,5 +346,6 @@ public class MainMenu : MonoBehaviour
 		Regex regex = new Regex (pattern);
 		return regex.IsMatch (name);
 	}
+	/* private bool IsValidGameName (string name) */
 
 }

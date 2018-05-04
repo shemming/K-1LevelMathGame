@@ -31,5 +31,6 @@ public class MainAreaTriggers : MonoBehaviour {
 	{
 		SceneManager.LoadScene(area);
 	}
+	/* public void OnTriggerEnter2D () */
 
 }

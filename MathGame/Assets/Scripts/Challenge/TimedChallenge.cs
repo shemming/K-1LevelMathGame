@@ -163,6 +163,7 @@ public class TimedChallenge : MonoBehaviour
 		highScore = gameStats.savedGameData.additionChallenge.l1HighScore;
 
 	}
+	/* void Start() */
 
 	///	<name>
 	/// UpdateTimer
@@ -203,6 +204,7 @@ public class TimedChallenge : MonoBehaviour
 			}
 		}
 	}
+	/* void UpdateTimer() */
 
 	/// <name>
 	/// Update
@@ -243,6 +245,7 @@ public class TimedChallenge : MonoBehaviour
 			isFocused = false;
 		}
 	}
+	/* void Update() */
 
 	/// <name>
 	/// StartGame
@@ -277,6 +280,7 @@ public class TimedChallenge : MonoBehaviour
 		InvokeRepeating ("UpdateTimer", 0.0f, Constants.TimedChallenge.CurrentGameGO.TIMER_REFRESH_RATE);
 
 	}
+	/* private void StartGame() */
 
 	/// <name>
 	/// EndGame
@@ -321,6 +325,7 @@ public class TimedChallenge : MonoBehaviour
 		// display the high score
 		gameOverHighScore.text = "High Score: " + highScore.ToString ();
 	}
+	/* private void EndGame() */
 
 	/// <name>
 	/// CheckAnswer
@@ -363,6 +368,7 @@ public class TimedChallenge : MonoBehaviour
 			inputFieldCO.ActivateInputField();
 		}
 	}
+	/* private void CheckAnswer() */
 
 	/// <name>
 	/// ExitToMainMenu
@@ -381,6 +387,7 @@ public class TimedChallenge : MonoBehaviour
 	{
 		SceneManager.LoadScene(Constants.SceneNames.MAIN_MENU);
 	}
+	/* private void ExitToMainMenu() */
 
 	/// <name>
 	/// SwitchToStoryMode
@@ -398,6 +405,7 @@ public class TimedChallenge : MonoBehaviour
 	{
 		SceneManager.LoadScene(Constants.SceneNames.MAIN_AREA);
 	}
+	/* private void SwitchToStoryMode() */
 
 	/// <name>
 	/// PlayAgain
@@ -431,6 +439,7 @@ public class TimedChallenge : MonoBehaviour
 		inputFieldCO.text = string.Empty;
 		inputFieldCO.ActivateInputField();
 	}
+	/* private void PlayAgain() */
 
 	/// <name>
 	/// SetEquationType
@@ -456,6 +465,7 @@ public class TimedChallenge : MonoBehaviour
 		endGameScreen.SetActive (false);
 		chooseLevelScreen.SetActive (true);
 	}
+	/* private void SetEquationType(MathEquation.EquationType eqType) */
 
 	/// <name>
 	/// SetLevel
@@ -475,6 +485,7 @@ public class TimedChallenge : MonoBehaviour
 		this.level = level;
 		StartGame ();
 	}
+	/* void SetLevel(int level) */
 
 	/// <name>
 	/// SetStoredHighScore
@@ -523,6 +534,7 @@ public class TimedChallenge : MonoBehaviour
 			}
 		}
 	}
+	/* private void SetStoredHighScore() */
 
 	/// <name>
 	/// GetHighScore
@@ -570,4 +582,5 @@ public class TimedChallenge : MonoBehaviour
 			}
 		}
 	}
+	/* private void GetHighScore() */
 }

@@ -71,6 +71,7 @@ namespace AssemblyCSharp
 				.onClick
 				.AddListener (delegate{CheckAnswer(EqualityEquation.EqualityType.EqualTo);});
 		}
+		/* void Start () */
 
 		/// <name>
 		/// ExitToMainMenu
@@ -89,6 +90,7 @@ namespace AssemblyCSharp
 			gameStats.SavePlayer ();
 			SceneManager.LoadScene(Constants.SceneNames.MAIN_AREA);
 		}
+		/* void ExitToMainMenu () */
 
 		/// <name>
 		/// CheckAnswer
@@ -122,6 +124,7 @@ namespace AssemblyCSharp
 				score.text = "Score: " + equalityGame.correctAnswers.ToString();
 			}
 		}
+		/* void CheckAnswer(EqualityEquation.EqualityType sign) */
 	}
 }
 

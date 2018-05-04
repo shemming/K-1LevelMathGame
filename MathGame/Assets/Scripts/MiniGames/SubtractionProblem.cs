@@ -101,6 +101,7 @@ public class SubtractionProblem : MonoBehaviour {
 		inputField.characterValidation = InputField.CharacterValidation.Integer;
 		inputField.characterLimit = 5;
 	}
+	/* void Start () */
 
 	/// <name>
 	/// Update
@@ -142,6 +143,7 @@ public class SubtractionProblem : MonoBehaviour {
 			isFocused = false;
 		}
 	}
+	/* void Update () */
 
 	/// <name>
 	/// CheckAnswer
@@ -174,16 +176,12 @@ public class SubtractionProblem : MonoBehaviour {
 			// play animation of coin going into score - wait until animation finishes
 			StartCoroutine(coinScript.AnimateAndWait (Constants.Subtraction.COIN_EARNED_ANIMATION));
 
-
-
 			// generate a new math problem & update display
 			subtractionGame.correctAnswers++;
 			equation.GenerateNewEquation ();
 			mathProblem.text = equation.EquationString;
 			inputFieldTextCO.text = string.Empty;
 			inputFieldTextCO.ActivateInputField();
-
-			Debug.Log ("Answer: " + equation.Difference);
 
 			// if player answers 10 questions right, they move to the next level
 			if (subtractionGame.correctAnswers % 10 == 0)
@@ -201,6 +199,7 @@ public class SubtractionProblem : MonoBehaviour {
 			chestScript.Animate (Constants.Subtraction.CHEST_LOCKED_ANIMATION);
 		}
 	}
+	/* void CheckAnswer() */
 
 	/// <name>
 	/// ExitGame
@@ -219,4 +218,5 @@ public class SubtractionProblem : MonoBehaviour {
 		gameStats.SavePlayer ();
 		SceneManager.LoadScene(Constants.SceneNames.MAIN_AREA);
 	}
+	/* private void ExitGame() */
 }

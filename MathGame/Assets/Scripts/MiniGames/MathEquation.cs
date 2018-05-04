@@ -67,6 +67,7 @@ namespace AssemblyCSharp
 			rnd = new System.Random ();
 			GenerateNewEquation ();
 		}
+		/* public MathEquation (int increaseRange, int level, EquationType type) */
 
 		/// <name>
 		/// Num1
@@ -117,6 +118,7 @@ namespace AssemblyCSharp
 				}
 			}
 		}
+		/* public string EquationString */
 
 		/// <name>
 		/// Sum
@@ -198,6 +200,7 @@ namespace AssemblyCSharp
 				level++;
 			}
 		}
+		/* public void IncreaseLevel() */
 
 		/// <name>
 		/// GenerateNewEquation
@@ -246,6 +249,7 @@ namespace AssemblyCSharp
 			num1 = tmpNum1;
 			num2 = tmpNum2;
 		}
+		/* public void GenerateNewEquation() */
 	}
 }
 

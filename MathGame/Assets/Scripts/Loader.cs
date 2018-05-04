@@ -15,12 +15,14 @@ using UnityEngine;
 /// <date>
 /// 4/14/18
 /// </date>
-public class Loader : MonoBehaviour {
+public class Loader : MonoBehaviour 
+{
 
 	public GameObject gameManager;
 
 	// Use this for initialization
-	void Awake () {
+	void Awake () 
+	{
 		if (GlobalControl.Instance == null)
 		{
 			Instantiate (gameManager);

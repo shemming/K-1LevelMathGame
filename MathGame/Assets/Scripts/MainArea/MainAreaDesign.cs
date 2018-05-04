@@ -72,6 +72,7 @@ public class MainAreaDesign : MonoBehaviour
 
 
 	}
+	/* void OnEnable () */
 
 	/// <name>
 	/// SetExtras
@@ -93,6 +94,7 @@ public class MainAreaDesign : MonoBehaviour
 		// show a star for every time the player reset the game
 		SetStars ();
 	}
+	/* public void SetExtras() */
 
 	/// <name>
 	/// FreezePlayer
@@ -111,6 +113,7 @@ public class MainAreaDesign : MonoBehaviour
 		GameObject varGameObject = GameObject.FindWithTag(Constants.PLAYER);
 		varGameObject.GetComponent<PlayerController>().enabled = false;
 	}
+	/* public void FreezePlayer() */
 
 	/// <name>
 	/// UnfreezePlayer
@@ -129,6 +132,7 @@ public class MainAreaDesign : MonoBehaviour
 		GameObject varGameObject = GameObject.FindWithTag(Constants.PLAYER);
 		varGameObject.GetComponent<PlayerController>().enabled = true;
 	}
+	/* public void UnfreezePlayer() */
 
 	/// <name>
 	/// Start
@@ -164,6 +168,7 @@ public class MainAreaDesign : MonoBehaviour
 		equalityText.GetComponent<TextMesh>().GetComponent<MeshRenderer>().sortingLayerName = Constants.MainArea.SORTING_LAYER;
 		equalityText.GetComponent<TextMesh>().GetComponent<MeshRenderer>().sortingOrder = 2;
 	}
+	/* void Start () */
 
 	/// <name>
 	/// SetIncentives
@@ -315,6 +320,7 @@ public class MainAreaDesign : MonoBehaviour
 			}
 		}
 	}
+	/* private void SetIncentives() */
 
 	/// <name>
 	/// SetStars
@@ -341,4 +347,5 @@ public class MainAreaDesign : MonoBehaviour
 			moduleGo.transform.Translate(new Vector3 (i/2f + .5f, -0.5f));
 		}
 	}
+	/* private void SetStars() */
 }

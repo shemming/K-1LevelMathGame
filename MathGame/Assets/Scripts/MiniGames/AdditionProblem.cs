@@ -10,7 +10,8 @@ using UnityEngine.UI;
 /// <summary>
 /// Script that runs the addition mini game. Attached to the canvas object.
 /// </summary>
-public class AdditionProblem : MonoBehaviour {
+public class AdditionProblem : MonoBehaviour 
+{
 	
 	#region Variable Declaration
 	//displays the current math problem
@@ -99,6 +100,7 @@ public class AdditionProblem : MonoBehaviour {
 		equation = new MathEquation (additionGame.increaseRange, additionGame.level, MathEquation.EquationType.Addition);
 		mathProblem.text = equation.EquationString;
 	}
+	/* void Start () */
 
 	/// <name>
 	/// Update
@@ -140,6 +142,7 @@ public class AdditionProblem : MonoBehaviour {
 			isFocused = false;
 		}
 	}
+	/* void Update () */
 
 	/// <name>
 	/// CheckAnswer
@@ -198,6 +201,7 @@ public class AdditionProblem : MonoBehaviour {
 			chestScript.Animate (Constants.Addition.CHEST_LOCKED_ANIMATION);
 		}
 	}
+	/* void CheckAnswer() */
 
 	/// <name>
 	/// ExitGame
@@ -216,4 +220,5 @@ public class AdditionProblem : MonoBehaviour {
 		gameStats.SavePlayer ();
 		SceneManager.LoadScene(Constants.SceneNames.MAIN_AREA);
 	}
+	/* void ExitGame() */
 }

@@ -51,6 +51,7 @@ namespace AssemblyCSharp
 			rnd = new System.Random ();
 			GenerateNewNumber ();
 		}
+		/* public Counter (int level) */
 
 		/// <name>
 		/// GenerateNewNumber
@@ -74,6 +75,7 @@ namespace AssemblyCSharp
 			while(tmp != num);
 			num = tmp;
 		}
+		/* public void GenerateNewNumber() */
 
 		/// <name>
 		/// Num
@@ -136,6 +138,7 @@ namespace AssemblyCSharp
 				level++;
 			}
 		}
+		/* public void IncreaseLevel() */
 
 	}
 }

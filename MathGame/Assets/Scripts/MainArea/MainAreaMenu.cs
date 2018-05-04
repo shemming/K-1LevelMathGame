@@ -41,7 +41,8 @@ public class MainAreaMenu : MonoBehaviour {
 	/// <date>
 	/// 4/24/18
 	/// </date>
-	void Start () {
+	void Start () 
+	{
 		
 		saveQuitButton
 			.onClick
@@ -67,6 +68,7 @@ public class MainAreaMenu : MonoBehaviour {
 		incentiveDisplayScript = incentiveDisplay.GetComponent<MainAreaDesign> ();
 
 	}
+	/* void Start () */
 
 	/// <name>
 	/// CheckProgress
@@ -88,6 +90,7 @@ public class MainAreaMenu : MonoBehaviour {
 			resetButton.gameObject.SetActive (false);
 		}
 	}
+	/* public void CheckProgress() */
 
 	/// <name>
 	/// SaveQuit
@@ -113,6 +116,7 @@ public class MainAreaMenu : MonoBehaviour {
 		GlobalControl.Save ();
 		SceneManager.LoadScene (Constants.SceneNames.MAIN_MENU);
 	}
+	/* private void SaveQuit() */
 
 	/// <name>
 	/// Challenge
@@ -132,6 +136,7 @@ public class MainAreaMenu : MonoBehaviour {
 		GlobalControl.Save ();
 		SceneManager.LoadScene (Constants.SceneNames.CHALLENGE);
 	}
+	/* private void Challenge() */
 
 	/// <name>
 	/// DisplayIncentives
@@ -155,6 +160,7 @@ public class MainAreaMenu : MonoBehaviour {
 		// prevent user from moving around the player while scores are shown
 		incentiveDisplayScript.FreezePlayer ();
 	}
+	/* private void DisplayIncentives() */
 
 	/// <name>
 	/// DisplayInstructions
@@ -177,6 +183,7 @@ public class MainAreaMenu : MonoBehaviour {
 		// prevent user from moving around the player while instructions are shown
 		incentiveDisplayScript.FreezePlayer ();
 	}
+	/* private void DisplayInstructions() */
 
 	/// <name>
 	/// DisplayResetPrompt
@@ -198,6 +205,7 @@ public class MainAreaMenu : MonoBehaviour {
 		blackOutSheet.SetActive (true);
 		incentiveDisplayScript.FreezePlayer ();
 	}
+	/* private void DisplayResetPrompt() */
 
 	/// <name>
 	/// SetStoryText
@@ -231,6 +239,7 @@ public class MainAreaMenu : MonoBehaviour {
 
 		scores.text = result;
 	}
+	/* public void SetStoryText() */
 
 	/// <name>
 	/// SetTimedText
@@ -258,6 +267,7 @@ public class MainAreaMenu : MonoBehaviour {
 
 		scores.text = result;
 	}
+	/* public void SetTimedText() */
 
 	/// <name>
 	/// ResetGame
@@ -319,4 +329,5 @@ public class MainAreaMenu : MonoBehaviour {
 			resetResultScreen.SetActive(true);
 		}
 	}
+	/* public void ResetGame(string response) */
 }

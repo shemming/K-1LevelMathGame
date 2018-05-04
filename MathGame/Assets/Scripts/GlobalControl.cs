@@ -40,6 +40,7 @@ public class GlobalControl : MonoBehaviour {
 			Destroy (gameObject);
 		}
 	}
+	/* void Awake() */
 
 	/// <name>
 	/// LoadPlayer
@@ -91,6 +92,7 @@ public class GlobalControl : MonoBehaviour {
 		savedGameData.resetPromptShown = Instance.savedGameData.resetPromptShown;
 		savedGameData.gamesCompleted = Instance.savedGameData.gamesCompleted;
 	}
+	/* public void LoadPlayer() */
 
 	/// <name>
 	/// SavePlayer
@@ -104,7 +106,8 @@ public class GlobalControl : MonoBehaviour {
 	/// <date>
 	/// 4/14/18
 	/// </date>
-	public void SavePlayer() {
+	public void SavePlayer() 
+	{
 		
 		// save all addition game data
 		Instance.savedGameData.addition.correctAnswers = savedGameData.addition.correctAnswers;
@@ -141,6 +144,7 @@ public class GlobalControl : MonoBehaviour {
 		Instance.savedGameData.gamesCompleted = savedGameData.gamesCompleted;
 
 	}
+	/* public void SavePlayer() */
 
 	/// <name>
 	/// Save
@@ -169,6 +173,7 @@ public class GlobalControl : MonoBehaviour {
 		string json = JsonUtility.ToJson (Instance.savedGameData);
 		File.WriteAllText (@path, json);
 	}
+	/* public static void Save(string s_filename = null) */
 
 	/// <name>
 	/// Load
@@ -183,7 +188,8 @@ public class GlobalControl : MonoBehaviour {
 	/// <date>
 	/// 4/15/18
 	/// </date>
-	public static void Load(string s_filename = null) {
+	public static void Load(string s_filename = null) 
+	{
 
 		// set the instance's file name if not already for future use
 		if (s_filename != null)
@@ -201,6 +207,7 @@ public class GlobalControl : MonoBehaviour {
 			Instance.savedGameData = JsonUtility.FromJson<Game> (json);
 		}
 	}
+	/* public static void Load(string s_filename = null) */
 
 	/// <name>
 	/// IsGameStarted
@@ -228,6 +235,7 @@ public class GlobalControl : MonoBehaviour {
 		}
 		return true;
 	}
+	/* public bool IsGameStarted() */
 
 	/// <name>
 	/// IsGameComplete
@@ -252,4 +260,5 @@ public class GlobalControl : MonoBehaviour {
 		}
 		return false;
 	}
+	/* public bool IsGameComplete() */
 }

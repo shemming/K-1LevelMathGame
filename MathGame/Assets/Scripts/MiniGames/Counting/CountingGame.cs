@@ -61,7 +61,8 @@ public class CountingGame : MonoBehaviour {
 	/// <date>
 	/// 4/10/18
 	/// </date>
-	void Start () {
+	void Start () 
+	{
 		
 		// get access to saved addition game info to update
 		gameStats = gameStatsGO.GetComponent<GlobalControl> ();
@@ -96,6 +97,7 @@ public class CountingGame : MonoBehaviour {
 		score.text = countingGame.correctAnswers.ToString();
 		TurnOnFlowers ();
 	}
+	/* void Start () */
 
 	/// <name>
 	/// Update
@@ -109,7 +111,8 @@ public class CountingGame : MonoBehaviour {
 	/// <date>
 	/// 4/10/18
 	/// </date>
-	void Update () {
+	void Update () 
+	{
 
 		// if the user presses enter, take that as if they clicked the enter button
 		// check if the answer is correct
@@ -136,6 +139,7 @@ public class CountingGame : MonoBehaviour {
 			isFocused = false;
 		}
 	}
+	/* void Update () */
 
 	/// <name>
 	/// TurnOnFlowers
@@ -159,7 +163,6 @@ public class CountingGame : MonoBehaviour {
 			flower.SetActive (false);
 		}
 
-		Debug.Log ("Num to guess: " + counter.Num);
 		// show the same number of flowers that the user is supposed to guess
 		for (int i = 0; i < counter.Num; i++)
 		{
@@ -178,6 +181,7 @@ public class CountingGame : MonoBehaviour {
 		}
 
 	}
+	/* private void TurnOnFlowers() */
 
 	/// <name>
 	/// CheckAnswer
@@ -193,7 +197,8 @@ public class CountingGame : MonoBehaviour {
 	/// <date>
 	/// 4/11/18
 	/// </date>
-	private void CheckAnswer() {
+	private void CheckAnswer() 
+	{
 		// get the number entered by the user.
 		// don't really need to validate it's a number because the input
 		// field only allows integers
@@ -225,6 +230,7 @@ public class CountingGame : MonoBehaviour {
 			InputFieldCO.ActivateInputField();
 		}
 	}
+	/* private void CheckAnswer() */
 
 	/// <name>
 	/// ExitGame
@@ -243,4 +249,5 @@ public class CountingGame : MonoBehaviour {
 		gameStats.SavePlayer ();
 		SceneManager.LoadScene(Constants.SceneNames.MAIN_AREA);
 	}
+	/* void ExitGame() */
 }

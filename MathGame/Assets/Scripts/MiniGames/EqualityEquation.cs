@@ -61,6 +61,7 @@ public class EqualityEquation {
 		GenerateNewEquation ();
 
 	}
+	/* public EqualityEquation(int level) */
 
 	/// <name>
 	/// IncreaseLevel
@@ -82,6 +83,7 @@ public class EqualityEquation {
 			level++;
 		}
 	}
+	/* public void IncreaseLevel() */
 
 	/// <name>
 	/// GenerateNewEquation
@@ -127,6 +129,7 @@ public class EqualityEquation {
 			sign = EqualityType.GreaterThan;
 		}
 	}
+	/* public void GenerateNewEquation() */
 
 	/// <name>
 	/// Num1
